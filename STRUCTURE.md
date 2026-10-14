@@ -8,6 +8,7 @@ Site público do portfólio (React + Vite, CSS Modules + Bootstrap).
 - `src/hooks/` — hooks reutilizáveis.
   - `useDigitacao.js` — efeito de digitação que alterna frases.
   - `useContagem.js` — anima um número de 0 até o valor alvo.
+  - `useRodizio.js` — exibe N itens de uma lista e troca um a cada intervalo.
   - `useGithub.js` — busca dados públicos do GitHub (com fallback silencioso).
 - `src/components/layout/` — `Cabecalho` (menu fixo), `Container`.
 - `src/components/sections/` — seções da página (`Heroi`, `Experiences`, `Skills`, `Projects`, `AboutMe`, `Contacts`).

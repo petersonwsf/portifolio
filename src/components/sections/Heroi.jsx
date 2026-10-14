@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { FaGithub, FaArrowDown, FaCircle } from 'react-icons/fa'
+import { FaGithub, FaArrowDown, FaCircle, FaCode } from 'react-icons/fa'
 import { formatDistanceToNowStrict } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import useDigitacao from '../../hooks/useDigitacao'
 import useContagem from '../../hooks/useContagem'
 import useGithub from '../../hooks/useGithub'
-import foto from '../../assets/img/eu.jpeg'
+import useRodizio from '../../hooks/useRodizio'
 import projetos from '../../assets/consts/projects'
 import habilidades from '../../assets/consts/skills'
 import experiencias from '../../assets/consts/experiences'
@@ -80,7 +80,8 @@ function Heroi() {
 
     const irParaSecao = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
-    const tecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage).slice(0, 10), [])
+    const todasTecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage), [])
+    const { itens: tecnologias, ultimo } = useRodizio(todasTecnologias, 8, 2500)
     const ultimaAtividade = github?.ultimoPush
         ? formatDistanceToNowStrict(new Date(github.ultimoPush), { addSuffix: true, locale: ptBR })
         : null
@@ -122,20 +123,28 @@ function Heroi() {
                     </div>
                 </div>
 
-                <aside className={styles.orbita} aria-label="Foto e tecnologias">
+                <aside className={styles.orbita} aria-label="Tecnologias que utilizo">
                     <div className={styles.anel}>
                         {tecnologias.map((tecnologia, indice) => (
                             <span
-                                key={tecnologia.name}
+                                key={indice}
                                 className={styles.satelite}
                                 style={{ '--angulo': `${(360 / tecnologias.length) * indice}deg` }}
-                                title={tecnologia.name}
                             >
-                                <img src={tecnologia.urlImage} alt={tecnologia.name} />
+                                <img
+                                    key={tecnologia.name}
+                                    src={tecnologia.urlImage}
+                                    alt={tecnologia.name}
+                                    title={tecnologia.name}
+                                    className={styles.logoSatelite}
+                                />
                             </span>
                         ))}
                     </div>
-                    <img src={foto} alt="Peterson William" className={styles.foto} />
+                    <div className={styles.nucleo}>
+                        <FaCode aria-hidden="true" />
+                        <span key={ultimo.name} className={styles.nomeTecnologia}>{ultimo.name}</span>
+                    </div>
                     <div className={`${styles.selo} ${styles.seloHora}`}>
                         <span>{formatadorHora.format(agora)}</span>
                         <small>Brasília</small>

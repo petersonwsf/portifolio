@@ -169,13 +169,46 @@
   transition: transform 0.15s ease-out;
 }
 
-.foto {
-  width: 58%;
+.nucleo {
+  position: relative;
+  width: 46%;
   aspect-ratio: 1;
-  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   border-radius: 50%;
-  border: 3px solid #0c3bb0;
-  box-shadow: 0 0 0 8px rgba(12, 59, 176, 0.18), 0 25px 60px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  background: radial-gradient(circle at 30% 30%, #4f7dff, #0c3bb0 70%);
+  box-shadow: 0 0 0 8px rgba(12, 59, 176, 0.18), 0 0 60px rgba(12, 59, 176, 0.7);
+  animation: pulsar 3s ease-in-out infinite;
+}
+
+.nucleo svg {
+  font-size: clamp(2rem, 8vw, 3.2rem);
+}
+
+.nomeTecnologia {
+  max-width: 85%;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  text-align: center;
+  animation: entrar 0.5s ease-out;
+}
+
+.logoSatelite {
+  animation: entrar 0.6s ease-out;
+}
+
+@keyframes entrar {
+  from { opacity: 0; transform: scale(0.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulsar {
+  0%, 100% { box-shadow: 0 0 0 8px rgba(12, 59, 176, 0.18), 0 0 50px rgba(12, 59, 176, 0.6); }
+  50% { box-shadow: 0 0 0 16px rgba(12, 59, 176, 0.1), 0 0 80px rgba(79, 125, 255, 0.8); }
 }
 
 .anel {
@@ -325,7 +358,10 @@
   }
 
   .anel,
-  .satelite {
+  .satelite,
+  .nucleo,
+  .nomeTecnologia,
+  .logoSatelite {
     animation: none;
   }
 
