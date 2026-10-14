@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { FaGithub, FaArrowDown, FaCircle, FaCode } from 'react-icons/fa'
+import { FaGithub, FaArrowDown, FaCircle } from 'react-icons/fa'
 import { formatDistanceToNowStrict } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import useDigitacao from '../../hooks/useDigitacao'
 import useContagem from '../../hooks/useContagem'
 import useGithub from '../../hooks/useGithub'
-import useRodizio from '../../hooks/useRodizio'
+import useCarrossel from '../../hooks/useCarrossel'
 import projetos from '../../assets/consts/projects'
 import habilidades from '../../assets/consts/skills'
 import experiencias from '../../assets/consts/experiences'
@@ -81,7 +81,22 @@ function Heroi() {
     const irParaSecao = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
     const todasTecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage), [])
-    const { itens: tecnologias, ultimo } = useRodizio(todasTecnologias, 8, 2500)
+    const passo = useCarrossel(2000)
+    const total = todasTecnologias.length
+    const indiceFrontal = ((passo % total) + total) % total
+    const frontal = todasTecnologias[indiceFrontal]
+
+    const estiloSatelite = (indice) => {
+        const angulo = ((indice - passo) * 2 * Math.PI) / total
+        const profundidade = Math.cos(angulo)
+        const destaque = indice === indiceFrontal
+        const escala = destaque ? 1.8 : 0.55 + 0.35 * ((profundidade + 1) / 2)
+        return {
+            transform: `translate(calc(-50% + var(--raio-x) * ${Math.sin(angulo).toFixed(4)}), calc(-50% + var(--raio-y) * ${profundidade.toFixed(4)})) scale(${escala.toFixed(3)})`,
+            opacity: destaque ? 1 : 0.25 + 0.5 * ((profundidade + 1) / 2),
+            zIndex: destaque ? 20 : Math.round((profundidade + 1) * 5),
+        }
+    }
     const ultimaAtividade = github?.ultimoPush
         ? formatDistanceToNowStrict(new Date(github.ultimoPush), { addSuffix: true, locale: ptBR })
         : null
@@ -124,27 +139,18 @@ function Heroi() {
                 </div>
 
                 <aside className={styles.orbita} aria-label="Tecnologias que utilizo">
-                    <div className={styles.anel}>
-                        {tecnologias.map((tecnologia, indice) => (
+                    <div className={styles.carrossel}>
+                        {todasTecnologias.map((tecnologia, indice) => (
                             <span
-                                key={indice}
-                                className={styles.satelite}
-                                style={{ '--angulo': `${(360 / tecnologias.length) * indice}deg` }}
+                                key={tecnologia.name}
+                                className={`${styles.satelite} ${indice === indiceFrontal ? styles.frontal : ''}`}
+                                style={estiloSatelite(indice)}
                             >
-                                <img
-                                    key={tecnologia.name}
-                                    src={tecnologia.urlImage}
-                                    alt={tecnologia.name}
-                                    title={tecnologia.name}
-                                    className={styles.logoSatelite}
-                                />
+                                <img src={tecnologia.urlImage} alt={tecnologia.name} title={tecnologia.name} />
                             </span>
                         ))}
                     </div>
-                    <div className={styles.nucleo}>
-                        <FaCode aria-hidden="true" />
-                        <span key={ultimo.name} className={styles.nomeTecnologia}>{ultimo.name}</span>
-                    </div>
+                    <p className={styles.nomeTecnologia} aria-live="off">{frontal.name}</p>
                     <div className={`${styles.selo} ${styles.seloHora}`}>
                         <span>{formatadorHora.format(agora)}</span>
                         <small>Brasília</small>

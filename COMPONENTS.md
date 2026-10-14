@@ -5,7 +5,7 @@
 - **Container** (`layout/Container.jsx`) — wrapper do `<main>`. Props: `children`.
 
 ## Seções
-- **Heroi** (`sections/Heroi.jsx`) — hero interativa: saudação por horário, papéis digitados, núcleo com logos de tecnologias orbitando e alternando a cada 2,5s, selos de hora de Brasília e dados do GitHub, contadores animados e brilho que segue o mouse. Sem props.
+- **Heroi** (`sections/Heroi.jsx`) — hero interativa: saudação por horário, papéis digitados, carrossel horizontal de logos de tecnologias que giram e destacam o da frente por 2s, selos de hora de Brasília e dados do GitHub, contadores animados e brilho que segue o mouse. Sem props.
 - **Experiences**, **Skills**, **Projects**, **AboutMe**, **Contacts** — seções da página.
 
 ## Cartões / Modal
