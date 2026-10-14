@@ -41,8 +41,10 @@
   transform: scale(1.06);
 }
 
-.colchete {
-  color: #4f7dff;
+.imagemLogo {
+  display: block;
+  width: 160px;
+  max-width: 45vw;
 }
 
 .menu {

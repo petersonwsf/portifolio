@@ -11,10 +11,12 @@ import experiencias from '../../assets/consts/experiences'
 import styles from './Heroi.module.css'
 
 const PAPEIS = [
+    'Engenheiro de Software',
     'Desenvolvedor Full-Stack',
-    'Engenharia de Software',
-    'Construtor de APIs',
-    'Apaixonado por dados',
+    'Cibersegurança',
+    'Analista de Sistemas',
+    'DevOps',
+    'Analista de Dados',
 ]
 
 const formatadorHora = new Intl.DateTimeFormat('pt-BR', {
@@ -101,8 +103,8 @@ function Heroi() {
                         <span className={styles.cursor} aria-hidden="true" />
                     </p>
                     <p className={styles.descricao}>
-                        Construo aplicações modernas, escaláveis e de alto desempenho, transformando ideias
-                        complexas em código limpo e soluções de real impacto.
+                        Construo aplicações modernas, escaláveis, seguras e de alto desempenho, transformando
+                        ideias complexas em código limpo e soluções de real impacto.
                     </p>
                     <div className={styles.acoes}>
                         <button className={styles.botaoPrimario} onClick={() => irParaSecao('projects')}>
@@ -124,7 +126,7 @@ function Heroi() {
                         <span className={styles.ponto} />
                         <span className={styles.ponto} />
                         <span className={styles.ponto} />
-                        <span className={styles.arquivo}>peterson.config.ts</span>
+                        <span className={styles.aoVivo}><FaCircle aria-hidden="true" /> ao vivo</span>
                     </div>
                     <div className={styles.painelCorpo}>
                         <p>

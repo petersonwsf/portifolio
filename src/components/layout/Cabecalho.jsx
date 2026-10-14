@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import logo from '../../assets/img/logo.png'
 import styles from './Cabecalho.module.css'
 
 const LINKS = [
@@ -52,9 +53,7 @@ function Cabecalho() {
         <header className={`${styles.cabecalho} ${rolou ? styles.rolou : ''}`}>
             <div className={styles.barra}>
                 <button className={styles.logo} onClick={() => irParaSecao('hero')} aria-label="Ir para o início">
-                    <span className={styles.colchete}>&lt;</span>
-                    PW
-                    <span className={styles.colchete}>/&gt;</span>
+                    <img src={logo} alt="Logo" className={styles.imagemLogo} />
                 </button>
 
                 <nav

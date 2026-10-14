@@ -189,10 +189,21 @@
 .ponto:nth-child(2) { background: #febc2e; }
 .ponto:nth-child(3) { background: #28c840; }
 
-.arquivo {
-  margin-left: 0.75rem;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+.aoVivo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  padding: 0.1rem 0.6rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  color: #3ddc84;
+  background: rgba(61, 220, 132, 0.12);
+}
+
+.aoVivo svg {
+  font-size: 0.5rem;
+  animation: piscar 1.6s ease-in-out infinite;
 }
 
 .painelCorpo {
@@ -297,6 +308,7 @@
   }
 
   .status,
+  .aoVivo svg,
   .cursor {
     animation: none;
   }
