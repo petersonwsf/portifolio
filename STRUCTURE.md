@@ -8,7 +8,7 @@ Site público do portfólio (React + Vite, CSS Modules + Bootstrap).
 - `src/hooks/` — hooks reutilizáveis.
   - `useDigitacao.js` — efeito de digitação que alterna frases.
   - `useContagem.js` — anima um número de 0 até o valor alvo.
-  - `useCarrossel.js` — contador de passos em intervalo fixo (alimenta o carrossel de logos).
+  - `useCarrossel.js` — carrossel de N itens que gira em intervalo fixo e renova os itens do fundo.
   - `useGithub.js` — busca dados públicos do GitHub (com fallback silencioso).
 - `src/components/layout/` — `Cabecalho` (menu fixo), `Container`.
 - `src/components/sections/` — seções da página (`Heroi`, `Experiences`, `Skills`, `Projects`, `AboutMe`, `Contacts`).

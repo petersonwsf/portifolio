@@ -194,6 +194,12 @@
   width: 30px;
   height: 30px;
   object-fit: contain;
+  animation: entrar 0.6s ease-out;
+}
+
+@keyframes entrar {
+  from { opacity: 0; transform: scale(0.3); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .frontal {
@@ -300,8 +306,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .satelite {
+  .satelite,
+  .satelite img {
     transition: none;
+    animation: none;
   }
 
   .status,

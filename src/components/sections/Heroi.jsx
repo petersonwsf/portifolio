@@ -81,10 +81,10 @@ function Heroi() {
     const irParaSecao = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
     const todasTecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage), [])
-    const passo = useCarrossel(2000)
-    const total = todasTecnologias.length
+    const { passo, itens: tecnologias } = useCarrossel(todasTecnologias, 6, 2000)
+    const total = tecnologias.length
     const indiceFrontal = ((passo % total) + total) % total
-    const frontal = todasTecnologias[indiceFrontal]
+    const frontal = tecnologias[indiceFrontal]
 
     const estiloSatelite = (indice) => {
         const angulo = ((indice - passo) * 2 * Math.PI) / total
@@ -140,13 +140,13 @@ function Heroi() {
 
                 <aside className={styles.orbita} aria-label="Tecnologias que utilizo">
                     <div className={styles.carrossel}>
-                        {todasTecnologias.map((tecnologia, indice) => (
+                        {tecnologias.map((tecnologia, indice) => (
                             <span
-                                key={tecnologia.name}
+                                key={indice}
                                 className={`${styles.satelite} ${indice === indiceFrontal ? styles.frontal : ''}`}
                                 style={estiloSatelite(indice)}
                             >
-                                <img src={tecnologia.urlImage} alt={tecnologia.name} title={tecnologia.name} />
+                                <img key={tecnologia.name} src={tecnologia.urlImage} alt={tecnologia.name} title={tecnologia.name} />
                             </span>
                         ))}
                     </div>
