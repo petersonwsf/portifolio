@@ -5,6 +5,7 @@ import { ptBR } from 'date-fns/locale'
 import useDigitacao from '../../hooks/useDigitacao'
 import useContagem from '../../hooks/useContagem'
 import useGithub from '../../hooks/useGithub'
+import foto from '../../assets/img/eu.jpeg'
 import projetos from '../../assets/consts/projects'
 import habilidades from '../../assets/consts/skills'
 import experiencias from '../../assets/consts/experiences'
@@ -79,7 +80,7 @@ function Heroi() {
 
     const irParaSecao = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
-    const tecnologias = useMemo(() => habilidades.map((habilidade) => habilidade.name), [])
+    const tecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage).slice(0, 10), [])
     const ultimaAtividade = github?.ultimoPush
         ? formatDistanceToNowStrict(new Date(github.ultimoPush), { addSuffix: true, locale: ptBR })
         : null
@@ -121,39 +122,28 @@ function Heroi() {
                     </div>
                 </div>
 
-                <aside className={styles.painel} aria-label="Painel dinâmico">
-                    <div className={styles.painelTopo}>
-                        <span className={styles.ponto} />
-                        <span className={styles.ponto} />
-                        <span className={styles.ponto} />
-                        <span className={styles.aoVivo}><FaCircle aria-hidden="true" /> ao vivo</span>
-                    </div>
-                    <div className={styles.painelCorpo}>
-                        <p>
-                            <span className={styles.chave}>horario</span>: <span className={styles.valor}>{formatadorHora.format(agora)}</span>
-                            <span className={styles.dica}> // Brasília</span>
-                        </p>
-                        <p>
-                            <span className={styles.chave}>status</span>: <span className={styles.valor}>"disponível para projetos"</span>
-                        </p>
-                        <p>
-                            <span className={styles.chave}>repositorios</span>:{' '}
-                            <span className={styles.valor}>{github ? github.repositorios : '...'}</span>
-                        </p>
-                        <p>
-                            <span className={styles.chave}>ultimoCommit</span>:{' '}
-                            <span className={styles.valor}>
-                                {github?.ultimoRepositorio ? `"${github.ultimoRepositorio}" ${ultimaAtividade}` : '"..."'}
+                <aside className={styles.orbita} aria-label="Foto e tecnologias">
+                    <div className={styles.anel}>
+                        {tecnologias.map((tecnologia, indice) => (
+                            <span
+                                key={tecnologia.name}
+                                className={styles.satelite}
+                                style={{ '--angulo': `${(360 / tecnologias.length) * indice}deg` }}
+                                title={tecnologia.name}
+                            >
+                                <img src={tecnologia.urlImage} alt={tecnologia.name} />
                             </span>
-                        </p>
-                        <p className={styles.tecnologias}>
-                            <span className={styles.chave}>stack</span>:
-                        </p>
-                        <ul className={styles.listaTecnologias}>
-                            {tecnologias.map((nome) => (
-                                <li key={nome}>{nome}</li>
-                            ))}
-                        </ul>
+                        ))}
+                    </div>
+                    <img src={foto} alt="Peterson William" className={styles.foto} />
+                    <div className={`${styles.selo} ${styles.seloHora}`}>
+                        <span>{formatadorHora.format(agora)}</span>
+                        <small>Brasília</small>
+                    </div>
+                    <div className={`${styles.selo} ${styles.seloGithub}`}>
+                        <FaGithub aria-hidden="true" />
+                        <span>{github ? `${github.repositorios} repositórios` : 'GitHub'}</span>
+                        {github?.ultimoRepositorio && <small>{github.ultimoRepositorio} · {ultimaAtividade}</small>}
                     </div>
                 </aside>
             </div>

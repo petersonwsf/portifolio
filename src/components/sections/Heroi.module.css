@@ -157,90 +157,105 @@
   color: #fff;
 }
 
-.painel {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  background: rgba(20, 20, 20, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(12, 59, 176, 0.25);
+.orbita {
+  --raio: 210px;
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
   transform: perspective(900px) rotateY(var(--inclinacao-x)) rotateX(var(--inclinacao-y));
   transition: transform 0.15s ease-out;
-  font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 0.9rem;
 }
 
-.painelTopo {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.ponto {
-  width: 11px;
-  height: 11px;
+.foto {
+  width: 58%;
+  aspect-ratio: 1;
+  object-fit: cover;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  border: 3px solid #0c3bb0;
+  box-shadow: 0 0 0 8px rgba(12, 59, 176, 0.18), 0 25px 60px rgba(0, 0, 0, 0.5);
 }
 
-.ponto:nth-child(1) { background: #ff5f57; }
-.ponto:nth-child(2) { background: #febc2e; }
-.ponto:nth-child(3) { background: #28c840; }
-
-.aoVivo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-left: auto;
-  padding: 0.1rem 0.6rem;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  color: #3ddc84;
-  background: rgba(61, 220, 132, 0.12);
+.anel {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(79, 125, 255, 0.4);
+  border-radius: 50%;
+  animation: girar 40s linear infinite;
 }
 
-.aoVivo svg {
-  font-size: 0.5rem;
-  animation: piscar 1.6s ease-in-out infinite;
+.orbita:hover .anel,
+.orbita:hover .satelite {
+  animation-play-state: paused;
 }
 
-.painelCorpo {
-  padding: 1.1rem 1.25rem 1.3rem;
+.satelite {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  animation: contragirar 40s linear infinite;
+}
+
+.satelite img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.selo {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
-  color: rgba(255, 255, 255, 0.85);
-  overflow-wrap: anywhere;
+  gap: 0.1rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-.chave {
-  color: #8fb0ff;
+.selo small {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.valor {
-  color: #f2c97d;
+.seloHora {
+  top: 4%;
+  left: -2%;
+  font-family: 'Consolas', 'Courier New', monospace;
 }
 
-.dica {
-  color: rgba(255, 255, 255, 0.35);
+.seloGithub {
+  bottom: 4%;
+  right: -2%;
+  max-width: 70%;
 }
 
-.listaTecnologias {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+@keyframes girar {
+  to { transform: rotate(360deg); }
 }
 
-.listaTecnologias li {
-  padding: 0.15rem 0.6rem;
-  border: 1px solid rgba(79, 125, 255, 0.4);
-  border-radius: 50px;
-  font-size: 0.75rem;
-  color: #cfdcff;
-  background: rgba(12, 59, 176, 0.2);
+@keyframes contragirar {
+  from {
+    transform: rotate(var(--angulo)) translateY(calc(var(--raio) * -1)) rotate(calc(var(--angulo) * -1));
+  }
+  to {
+    transform: rotate(var(--angulo)) translateY(calc(var(--raio) * -1)) rotate(calc(var(--angulo) * -1 - 360deg));
+  }
 }
 
 .estatisticas {
@@ -284,8 +299,10 @@
     gap: 2.5rem;
   }
 
-  .painel {
+  .orbita {
     transform: none;
+    --raio: 170px;
+    width: min(100%, 340px);
   }
 }
 
@@ -302,13 +319,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .painel {
+  .orbita {
     transform: none;
     transition: none;
   }
 
+  .anel,
+  .satelite {
+    animation: none;
+  }
+
   .status,
-  .aoVivo svg,
   .cursor {
     animation: none;
   }
