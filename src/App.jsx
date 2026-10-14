@@ -1,9 +1,9 @@
 // LAYOUTS
-import Navbar from "./components/layout/Navbar";
+import Cabecalho from "./components/layout/Cabecalho";
 import Container from "./components/layout/Container";
 
 // SECTIONS
-import Hero from './components/sections/Hero'
+import Heroi from "./components/sections/Heroi"
 import AboutMe from './components/sections/AboutMe'
 import Skills from './components/sections/Skills'
 import Projects from './components/sections/Projects'
@@ -14,8 +14,8 @@ function App() {
 
   return (
     <div>
-      <Navbar />
-      <Hero />
+      <Cabecalho />
+      <Heroi />
       <Container>
         <Experiences />
         <Skills/>

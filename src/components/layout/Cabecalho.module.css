@@ -1,0 +1,170 @@
+.cabecalho {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rolou {
+  background: rgba(41, 41, 40, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.barra {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.06);
+}
+
+.colchete {
+  color: #4f7dff;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.link {
+  position: relative;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.15rem;
+  height: 2px;
+  background: #4f7dff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.link:hover,
+.ativo {
+  color: #fff;
+}
+
+.link:hover::after,
+.ativo::after {
+  transform: scaleX(1);
+}
+
+.contato {
+  margin-left: 0.5rem;
+  padding: 0.55rem 1.3rem;
+  border: none;
+  border-radius: 50px;
+  background: #0c3bb0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contato:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(12, 59, 176, 0.5);
+}
+
+.botaoMenu {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.progresso {
+  height: 3px;
+  background: linear-gradient(90deg, #0c3bb0, #4f7dff);
+  transition: width 0.1s linear;
+}
+
+@media (max-width: 768px) {
+  .cabecalho {
+    background: rgba(41, 41, 40, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .botaoMenu {
+    display: block;
+  }
+
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 1.5rem 1.25rem;
+    background: rgba(41, 41, 40, 0.97);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .menuAberto {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .link {
+    text-align: left;
+    padding: 0.85rem 0;
+  }
+
+  .link::after {
+    left: 0;
+    right: auto;
+    width: 2rem;
+  }
+
+  .contato {
+    margin: 0.75rem 0 0;
+  }
+}
