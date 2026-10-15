@@ -1,10 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { FaGithub, FaArrowDown, FaCircle } from 'react-icons/fa'
-import { formatDistanceToNowStrict } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
 import useDigitacao from '../../hooks/useDigitacao'
 import useContagem from '../../hooks/useContagem'
-import useGithub from '../../hooks/useGithub'
 import useRodizio from '../../hooks/useRodizio'
 import foto from '../../assets/img/eu.jpeg'
 import projetos from '../../assets/consts/projects'
@@ -20,13 +17,6 @@ const PAPEIS = [
     'DevOps',
     'Analista de Dados',
 ]
-
-const formatadorHora = new Intl.DateTimeFormat('pt-BR', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    timeZone: 'America/Sao_Paulo',
-})
 
 const saudacaoPorHora = (data) => {
     const hora = Number(
@@ -59,7 +49,6 @@ function Estatistica({ valor, rotulo }) {
 function Heroi() {
     const [agora, setAgora] = useState(() => new Date())
     const papel = useDigitacao(PAPEIS)
-    const github = useGithub()
 
     useEffect(() => {
         const intervalo = setInterval(() => setAgora(new Date()), 1000)
@@ -70,10 +59,6 @@ function Heroi() {
 
     const todasTecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage && habilidade.name !== 'GitHub'), [])
     const tecnologias = useRodizio(todasTecnologias, 8, 2500)
-
-    const ultimaAtividade = github?.ultimoPush
-        ? formatDistanceToNowStrict(new Date(github.ultimoPush), { addSuffix: true, locale: ptBR })
-        : null
 
     return (
         <section id="hero" className={styles.heroi}>
@@ -103,7 +88,7 @@ function Heroi() {
                         </button>
                         <a
                             className={styles.botaoSecundario}
-                            href="https://github.com/petersonwilliam-dev"
+                            href="https://github.com/petersonwsf"
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -125,15 +110,6 @@ function Heroi() {
                         ))}
                     </div>
                     <img src={foto} alt="Peterson William" className={styles.foto} />
-                    <div className={`${styles.selo} ${styles.seloHora}`}>
-                        <span>{formatadorHora.format(agora)}</span>
-                        <small>Brasília</small>
-                    </div>
-                    <div className={`${styles.selo} ${styles.seloGithub}`}>
-                        <FaGithub aria-hidden="true" />
-                        <span>{github ? `${github.repositorios} repositórios` : 'GitHub'}</span>
-                        {github?.ultimoRepositorio && <small>{github.ultimoRepositorio} · {ultimaAtividade}</small>}
-                    </div>
                 </aside>
             </div>
 
