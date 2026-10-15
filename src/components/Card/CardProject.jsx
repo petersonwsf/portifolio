@@ -7,7 +7,7 @@ function CardProject({ project, aoVerDetalhes }) {
     return (
         <article className={styles.card}>
             <div className={styles.imagem}>
-                <img src={project.images[0]} alt={`Imagem do projeto ${project.name}`} loading="lazy" />
+                <img src={project.images[0]} alt={`Imagem do projeto ${project.name}`} />
                 <span className={styles.categoria}>{project.categoria}</span>
             </div>
 

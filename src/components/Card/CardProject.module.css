@@ -1,7 +1,7 @@
 .card {
-  width: 320px;
+  width: 560px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: left;
   color: #f6f6f6;
   border: 1px solid rgba(79, 125, 255, 0.45);
@@ -20,7 +20,8 @@
 
 .imagem {
   position: relative;
-  aspect-ratio: 16 / 10;
+  flex: 0 0 45%;
+  min-height: 220px;
   overflow: hidden;
   background: #1a1a19;
 }
@@ -54,7 +55,8 @@
   flex-direction: column;
   gap: 0.9rem;
   flex: 1;
-  padding: 1.1rem 1.1rem 1.25rem;
+  min-width: 0;
+  padding: 1.1rem 1.25rem;
 }
 
 .titulo {
@@ -96,25 +98,36 @@
 }
 
 .botao {
+  align-self: flex-start;
   margin-top: auto;
-  padding: 0.6rem 1rem;
-  border: 2px solid #0c3bb0;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid rgba(79, 125, 255, 0.6);
   border-radius: 50px;
-  background: #0c3bb0;
+  background: rgba(12, 59, 176, 0.12);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #fff;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .botao:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(12, 59, 176, 0.55);
+  background: rgba(12, 59, 176, 0.45);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(12, 59, 176, 0.4);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .card {
-    width: 260px;
+    width: 340px;
+  }
+
+  .imagem {
+    flex-basis: 40%;
+    min-height: 200px;
+  }
+
+  .conteudo {
+    padding: 0.9rem;
   }
 }
