@@ -22,6 +22,6 @@ Site público do portfólio (React + Vite, CSS Modules + Bootstrap).
 - `src/assets/img/` — imagens.
 
 ## Deploy
-- `Dockerfile` — build do Vite (`VITE_API_URL` via build-arg) e imagem final com Nginx; `nginx.conf` — servidor estático com fallback de SPA.
+- `Dockerfile` — build do Vite (`VITE_API_URL` via build-arg) e imagem final com Caddy servindo os arquivos estáticos; `Caddyfile` — fallback de SPA e cache.
 - `.github/workflows/deploy.yml` — CD: build, push no GHCR e atualização do container na VPS por SSH.
 - `deploy/` — `docker-compose.yml` de exemplo para a VPS e `LEIAME.md` com os secrets/variáveis necessários.
