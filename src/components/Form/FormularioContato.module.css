@@ -1,0 +1,110 @@
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  border: 1px solid rgba(79, 125, 255, 0.45);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(12, 59, 176, 0.2);
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.campo label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #8fb0ff;
+}
+
+.campo input,
+.campo textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  border-color: #4f7dff;
+  box-shadow: 0 0 0 3px rgba(12, 59, 176, 0.35);
+}
+
+.campo [aria-invalid='true'] {
+  border-color: #ff6b6b;
+}
+
+.erro {
+  font-size: 0.8rem;
+  color: #ff8a8a;
+}
+
+.sucesso {
+  color: #3ddc84;
+}
+
+.botao {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.6rem;
+  border: 2px solid #0c3bb0;
+  border-radius: 50px;
+  background: #0c3bb0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.botao:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(12, 59, 176, 0.5);
+}
+
+.botao:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.status {
+  min-height: 1.2rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .linha {
+    grid-template-columns: 1fr;
+  }
+
+  .botao {
+    align-self: stretch;
+    justify-content: center;
+  }
+}

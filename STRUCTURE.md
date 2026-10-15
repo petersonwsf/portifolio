@@ -11,9 +11,11 @@ Site público do portfólio (React + Vite, CSS Modules + Bootstrap).
   - `useRodizio.js` — exibe N itens de uma lista e troca um a cada intervalo.
   - `useGithub.js` — busca dados públicos do GitHub (com fallback silencioso).
 - `src/components/layout/` — `Cabecalho` (menu fixo), `Container`.
-- `src/components/sections/` — seções da página (`Heroi`, `Experiences`, `Skills`, `Projects`, `AboutMe`, `Contacts`).
+- `src/components/sections/` — seções da página (`Heroi`, `Experiences`, `Skills`, `Projects`, `Contacts`).
 - `src/components/Carrossel/` — `Carrossel` (um slide por vez) e `CarrosselFaixa` (faixa com vários itens).
 - `src/components/Card/`, `src/components/Modal/` — cartões e modal de projeto.
+- `src/services/contato.js` — envio do formulário de contato (simulado; falta integrar ao backend).
+- `src/components/Form/` — `FormularioContato`.
 - `src/utils/tecnologias.js` — funções para listar tecnologias de um projeto e buscar o ícone da habilidade correspondente.
 - `src/assets/consts/` — dados estáticos (projetos, habilidades, experiências).
 - `src/assets/img/` — imagens.

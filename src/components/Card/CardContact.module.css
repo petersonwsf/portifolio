@@ -1,99 +1,58 @@
-.cardLink {
-    text-decoration: none;
-    display: inline-block;
-}
-
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2em;
-    margin: .5em 1rem;
-    border-radius: 12px;
-    background: rgba(55, 201, 239, 0.05);
-    border: 2px solid transparent;
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    cursor: pointer;
-    min-width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgba(79, 125, 255, 0.45);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(12, 59, 176, 0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    background: rgba(55, 201, 239, 0.12);
-    border-color: #37c9ef;
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(55, 201, 239, 0.2);
+  transform: translateY(-3px);
+  color: #fff;
+  border-color: #4f7dff;
+  box-shadow: 0 14px 34px rgba(12, 59, 176, 0.4);
 }
 
-.logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1em;
-    transition: transform 0.35s ease;
+.icone {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  background: #0c3bb0;
+  box-shadow: 0 6px 18px rgba(12, 59, 176, 0.55);
 }
 
-.logo img {
-    width: 75px;
-    height: 75px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-    transition: all 0.35s ease;
+.texto {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.card:hover .logo img {
-    transform: scale(1.1);
-    filter: drop-shadow(0 4px 8px rgba(55, 201, 239, 0.3));
+.texto strong {
+  font-size: 1.05rem;
 }
 
-.label {
-    color: #37c9ef;
-    font-weight: 600;
-    margin: 0;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.texto small {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  overflow-wrap: anywhere;
 }
 
-.value {
-    color: #fff;
-    margin-top: 0.5em;
-    text-align: center;
-    word-break: break-word;
-    font-size: 0.95rem;
+.seta {
+  color: #8fb0ff;
+  transition: transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .card {
-        padding: 1.5em;
-        min-width: 150px;
-    }
-
-    .logo img {
-        width: 60px;
-        height: 60px;
-    }
-
-    .value {
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 375px) {
-    .card {
-        padding: 1em;
-        margin: 0.75em;
-        min-width: 140px;
-    }
-
-    .logo img {
-        width: 50px;
-        height: 50px;
-    }
-
-    .label {
-        font-size: 0.75rem;
-    }
-
-    .value {
-        font-size: 0.8rem;
-    }
+.card:hover .seta {
+  transform: translateX(4px);
 }

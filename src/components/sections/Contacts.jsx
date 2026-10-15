@@ -1,38 +1,41 @@
-import CardContact from "../Card/CardContact"
-import gmail from '../../assets/img/gmail.webp'
+import { FaLinkedin, FaGithub } from 'react-icons/fa'
+import CardContact from '../Card/CardContact'
+import FormularioContato from '../Form/FormularioContato'
+import SecaoEscura from '../layout/SecaoEscura'
+import styles from './Contacts.module.css'
+
+const CONTATOS = [
+    {
+        label: 'LinkedIn',
+        value: 'Peterson William',
+        icone: <FaLinkedin />,
+        link: 'https://www.linkedin.com/in/peterson-william-02ba87243/',
+    },
+    {
+        label: 'GitHub',
+        value: 'petersonwsf',
+        icone: <FaGithub />,
+        link: 'https://github.com/petersonwsf',
+    },
+]
 
 function Contacts() {
-
-    const contacts = [
-        {
-            label: "Email",
-            value: "petersondev.profissional@gmail.com",
-            image: gmail,
-            link: "mailto:petersondev.profissional@gmail.com"
-        },
-        {
-            label: "LinkedIn",
-            value: "Peterson William",
-            image: "https://img.icons8.com/color/96/000000/linkedin.png",
-            link: "https://www.linkedin.com/in/peterson-william-02ba87243/" 
-        },
-        {
-            label: "GitHub",
-            value: "petersonwsf",
-            image: "https://img.icons8.com/color/96/000000/github--v1.png",
-            link: "https://github.com/petersonwsf"
-        }
-    ]
-
     return (
-        <section id="contacts" className="section_black">
-            <h2 className="display-6 title_white">Contatos</h2>
-            <div className="d-flex justify-content-center flex-wrap">
-                {contacts.map((contact, index) => (
-                    <CardContact key={index} contact={contact} />
-                ))}
+        <SecaoEscura id="contacts" etiqueta="<contato />" titulo="Contato">
+            <div className={styles.conteudo}>
+                <div className={styles.formulario}>
+                    <h3 className={styles.subtitulo}>Envie uma mensagem</h3>
+                    <FormularioContato />
+                </div>
+
+                <div className={styles.redes}>
+                    <h3 className={styles.subtitulo}>Também estou por aqui</h3>
+                    {CONTATOS.map((contato) => (
+                        <CardContact key={contato.label} contact={contato} />
+                    ))}
+                </div>
             </div>
-        </section>
+        </SecaoEscura>
     )
 }
 

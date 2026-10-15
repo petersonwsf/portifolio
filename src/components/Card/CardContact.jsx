@@ -1,23 +1,16 @@
+import { FaArrowRight } from 'react-icons/fa'
 import styles from './CardContact.module.css'
 
-function CardContact({contact}) {
-
+/** Link de contato externo. Props: `contact` ({ label, value, icone, link }). */
+function CardContact({ contact }) {
     return (
-        <a 
-            href={contact.link} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={styles.cardLink}
-        >
-            <div className={styles.card}>
-                <div className={styles.logo}>
-                    <img src={contact.image} alt={contact.label} />
-                </div>
-                <div className='d-flex align-items-center flex-column m-0'>
-                    <h6 className={styles.label}>{contact.label}</h6>
-                    <h5 className={styles.value}>{contact.value}</h5>
-                </div>
-            </div>
+        <a href={contact.link} target="_blank" rel="noopener noreferrer" className={styles.card}>
+            <span className={styles.icone} aria-hidden="true">{contact.icone}</span>
+            <span className={styles.texto}>
+                <strong>{contact.label}</strong>
+                <small>{contact.value}</small>
+            </span>
+            <FaArrowRight className={styles.seta} aria-hidden="true" />
         </a>
     )
 }
