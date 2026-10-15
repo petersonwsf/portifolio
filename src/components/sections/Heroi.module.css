@@ -6,7 +6,7 @@
   justify-content: center;
   gap: 3rem;
   padding: 7rem 1.5rem 3rem;
-  overflow: hidden;
+  overflow-x: clip;
   text-align: left;
   color: #fff;
   background: #292928;
@@ -31,6 +31,8 @@
   background:
     radial-gradient(500px circle at 15% 85%, rgba(12, 59, 176, 0.35), transparent 60%),
     radial-gradient(500px circle at 85% 20%, rgba(12, 59, 176, 0.25), transparent 60%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 75%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 75%, transparent 100%);
   pointer-events: none;
 }
 
@@ -151,8 +153,9 @@
 }
 
 .orbita {
-  --raio-x: 190px;
+  --raio-x: calc(50cqw - 50px);
   --raio-y: 40px;
+  container-type: inline-size;
   position: relative;
   width: min(100%, 460px);
   margin: 0 auto;
@@ -280,7 +283,6 @@
   }
 
   .orbita {
-    --raio-x: 130px;
     --raio-y: 30px;
     width: min(100%, 340px);
   }
