@@ -16,7 +16,7 @@
 - **CardExperience** (`Card/CardExperience.jsx`) — cartão de experiência: logo, empresa, cargo, período ("atual" se sem `endDate`), descrição e tecnologias como chips. Props: `experiencia` ({ empresa, cargo, descricao, dataInicio, dataFim, imagem, tecnologias }).
 **CardProject** — apresentação de itens das seções.
 
-- **Skills** (`sections/Skills.jsx`) — habilidades agrupadas por classificação (Frontend, Backend, DevOps, Dados, Outros) via campo `categoria` de `assets/consts/skills.js`.
+- **Skills** (`sections/Skills.jsx`) — habilidades agrupadas por classificação (Frontend, Backend, DevOps, Dados, Outros) via campo `categoria` das habilidades vindas da API, com o nível de cada uma.
 - **CardCategoriaHabilidades** (`Card/CardCategoriaHabilidades.jsx`) — cartão de uma classificação com lista de habilidades. Props: `titulo`, `icone`, `habilidades`.
 - **CardSkill** (`Card/CardSkill.jsx`) — item da lista: ícone + rótulo. Props: `habilidade` ({ nome, imagem, nivel }); mostra o nível com 3 círculos e rótulo.
 - **Projects** (`sections/Projects.jsx`) — projetos em `CarrosselFaixa` (vários cards visíveis, avança/volta pelos botões) com `CardProject`; gerencia o `ModalProject` aberto.
