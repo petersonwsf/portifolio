@@ -14,5 +14,6 @@ Site público do portfólio (React + Vite, CSS Modules + Bootstrap).
 - `src/components/sections/` — seções da página (`Heroi`, `Experiences`, `Skills`, `Projects`, `AboutMe`, `Contacts`).
 - `src/components/Carrossel/` — `Carrossel` (um slide por vez) e `CarrosselFaixa` (faixa com vários itens).
 - `src/components/Card/`, `src/components/Modal/` — cartões e modal de projeto.
+- `src/utils/tecnologias.js` — funções para listar tecnologias de um projeto e buscar o ícone da habilidade correspondente.
 - `src/assets/consts/` — dados estáticos (projetos, habilidades, experiências).
 - `src/assets/img/` — imagens.

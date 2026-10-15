@@ -198,12 +198,23 @@
 }
 
 .tecnologias li {
-  padding: 0.2rem 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem 0.25rem 0.5rem;
   border: 1px solid rgba(79, 125, 255, 0.45);
   border-radius: 50px;
   font-size: 0.8rem;
   color: #cfdcff;
   background: rgba(12, 59, 176, 0.25);
+}
+
+.tecnologias li img,
+.tecnologias li svg {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9));
 }
 
 .links {

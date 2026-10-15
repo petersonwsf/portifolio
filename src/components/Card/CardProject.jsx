@@ -1,8 +1,13 @@
+import { listarTecnologias } from '../../utils/tecnologias'
 import styles from './CardProject.module.css'
+
+const MAX_TECNOLOGIAS_VISIVEIS = 3
 
 /** Cartão de projeto. Props: `project` e `aoVerDetalhes` (callback ao clicar no botão). */
 function CardProject({ project, aoVerDetalhes }) {
-    const tecnologias = project.technologies.split(',').map((tecnologia) => tecnologia.trim())
+    const todas = listarTecnologias(project.technologies)
+    const tecnologias = todas.slice(0, MAX_TECNOLOGIAS_VISIVEIS)
+    const restantes = todas.length - tecnologias.length
 
     return (
         <article className={styles.card}>
@@ -21,6 +26,7 @@ function CardProject({ project, aoVerDetalhes }) {
                     {tecnologias.map((tecnologia) => (
                         <li key={tecnologia}>{tecnologia}</li>
                     ))}
+                    {restantes > 0 && <li className={styles.mais}>Mais {restantes}...</li>}
                 </ul>
 
                 <button className={styles.botao} onClick={() => aoVerDetalhes(project)}>

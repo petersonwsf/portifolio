@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { FaTimes, FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { FaTimes, FaCode, FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { buscarIconeTecnologia, listarTecnologias } from '../../utils/tecnologias'
 import styles from './ModalProject.module.css'
 
 /** Modal de detalhes do projeto. Props: `project` e `aoFechar`. */
 function ModalProject({ project, aoFechar }) {
     const [indiceImagem, setIndiceImagem] = useState(0)
     const total = project.images.length
-    const tecnologias = project.technologies.split(',').map((tecnologia) => tecnologia.trim())
+    const tecnologias = listarTecnologias(project.technologies)
 
     useEffect(() => {
         const aoTeclar = (evento) => {
@@ -87,7 +88,12 @@ function ModalProject({ project, aoFechar }) {
                     <h4 className={styles.subtitulo}>Tecnologias</h4>
                     <ul className={styles.tecnologias}>
                         {tecnologias.map((tecnologia) => (
-                            <li key={tecnologia}>{tecnologia}</li>
+                            <li key={tecnologia}>
+                                {buscarIconeTecnologia(tecnologia)
+                                    ? <img src={buscarIconeTecnologia(tecnologia)} alt="" />
+                                    : <FaCode aria-hidden="true" />}
+                                {tecnologia}
+                            </li>
                         ))}
                     </ul>
 
