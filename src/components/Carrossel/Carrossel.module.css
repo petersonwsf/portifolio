@@ -19,6 +19,9 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   outline: none;
+  /* espaço interno para as sombras dos slides não serem cortadas pelo overflow */
+  padding: 2.5rem 0 5rem;
+  margin: -2.5rem 0 -5rem;
 }
 
 .trilho::-webkit-scrollbar {
@@ -28,7 +31,7 @@
 .slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
-  padding: 0.5rem;
+  padding: 0 3rem;
 }
 
 .seta {
@@ -81,6 +84,10 @@
 }
 
 @media (max-width: 640px) {
+  .slide {
+    padding: 0 1rem;
+  }
+
   .seta {
     position: absolute;
     top: 50%;
