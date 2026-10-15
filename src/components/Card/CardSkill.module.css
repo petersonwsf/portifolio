@@ -1,41 +1,37 @@
 .item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 0.75rem 0.5rem 0.5rem;
-  border: 1px solid rgba(79, 125, 255, 0.35);
-  border-radius: 12px;
-  background: rgba(12, 59, 176, 0.18);
-  box-shadow: 0 6px 18px rgba(12, 59, 176, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  gap: 0.5rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 8px;
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .item:hover {
-  transform: translateY(-3px);
-  border-color: #4f7dff;
-  box-shadow: 0 10px 26px rgba(12, 59, 176, 0.55);
+  background: rgba(12, 59, 176, 0.25);
+  transform: translateX(2px);
 }
 
 .icone {
   flex: 0 0 auto;
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
+  border-radius: 7px;
   background: #fff;
 }
 
 .icone img {
-  width: 26px;
-  height: 26px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
 }
 
 .rotulo {
   min-width: 0;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #f6f6f6;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
   text-align: left;
 }

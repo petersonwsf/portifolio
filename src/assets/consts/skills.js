@@ -95,6 +95,7 @@ const skills = [
     {
         name: "GitHub",
         categoria: 'Outros',
+        fundoIcone: '#24292f',
         urlImage: github,
         hex: "#fff"
     },

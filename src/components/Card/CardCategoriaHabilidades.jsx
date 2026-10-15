@@ -8,7 +8,6 @@ function CardCategoriaHabilidades({ titulo, icone, habilidades }) {
             <header className={styles.topo}>
                 <span className={styles.icone} aria-hidden="true">{icone}</span>
                 <h3 className={styles.titulo}>{titulo}</h3>
-                <span className={styles.quantidade}>{habilidades.length}</span>
             </header>
             <ul className={styles.lista}>
                 {habilidades.map((habilidade) => (
