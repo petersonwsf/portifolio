@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { FaTimes, FaCode, FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import { buscarIconeTecnologia, listarTecnologias } from '../../utils/tecnologias'
 import styles from './ModalProject.module.css'
 
-/** Modal de detalhes do projeto. Props: `project` e `aoFechar`. */
-function ModalProject({ project, aoFechar }) {
+/** Modal de detalhes do projeto. Props: `projeto` e `aoFechar`. */
+function ModalProject({ projeto, aoFechar }) {
     const [indiceImagem, setIndiceImagem] = useState(0)
-    const total = project.images.length
-    const tecnologias = listarTecnologias(project.technologies)
+    const total = projeto.imagens.length
 
     useEffect(() => {
         const aoTeclar = (evento) => {
             if (evento.key === 'Escape') aoFechar()
+            if (total === 0) return
             if (evento.key === 'ArrowRight') setIndiceImagem((atual) => (atual + 1) % total)
             if (evento.key === 'ArrowLeft') setIndiceImagem((atual) => (atual - 1 + total) % total)
         }
@@ -31,7 +30,7 @@ function ModalProject({ project, aoFechar }) {
                 className={styles.modal}
                 role="dialog"
                 aria-modal="true"
-                aria-label={`Detalhes do projeto ${project.name}`}
+                aria-label={`Detalhes do projeto ${projeto.nome}`}
                 onClick={(evento) => evento.stopPropagation()}
             >
                 <button className={styles.fechar} onClick={aoFechar} aria-label="Fechar">
@@ -49,7 +48,9 @@ function ModalProject({ project, aoFechar }) {
                                 <FaChevronLeft />
                             </button>
                         )}
-                        <img src={project.images[indiceImagem]} alt={`${project.name} - imagem ${indiceImagem + 1}`} />
+                        {total > 0 && (
+                            <img src={projeto.imagens[indiceImagem]} alt={`${projeto.nome} - imagem ${indiceImagem + 1}`} />
+                        )}
                         {total > 1 && (
                             <button
                                 className={`${styles.seta} ${styles.proxima}`}
@@ -63,7 +64,7 @@ function ModalProject({ project, aoFechar }) {
 
                     {total > 1 && (
                         <div className={styles.miniaturas}>
-                            {project.images.map((imagem, indice) => (
+                            {projeto.imagens.map((imagem, indice) => (
                                 <button
                                     key={indice}
                                     className={`${styles.miniatura} ${indice === indiceImagem ? styles.miniaturaAtiva : ''}`}
@@ -79,32 +80,32 @@ function ModalProject({ project, aoFechar }) {
 
                 <div className={styles.info}>
                     <div className={styles.meta}>
-                        <span className={styles.categoria}>{project.categoria}</span>
-                        <span className={styles.ano}>{project.ano}</span>
+                        <span className={styles.categoria}>{projeto.categoria}</span>
+                        <span className={styles.ano}>{projeto.ano}</span>
                     </div>
-                    <h3 className={styles.titulo}>{project.name}</h3>
-                    <p className={styles.descricao}>{project.details}</p>
+                    <h3 className={styles.titulo}>{projeto.nome}</h3>
+                    <p className={styles.descricao}>{projeto.descricao}</p>
 
                     <h4 className={styles.subtitulo}>Tecnologias</h4>
                     <ul className={styles.tecnologias}>
-                        {tecnologias.map((tecnologia) => (
-                            <li key={tecnologia}>
-                                {buscarIconeTecnologia(tecnologia)
-                                    ? <img src={buscarIconeTecnologia(tecnologia)} alt="" />
+                        {projeto.tecnologias.map((tecnologia) => (
+                            <li key={tecnologia.id}>
+                                {tecnologia.imagem
+                                    ? <img src={tecnologia.imagem} alt="" />
                                     : <FaCode aria-hidden="true" />}
-                                {tecnologia}
+                                {tecnologia.nome}
                             </li>
                         ))}
                     </ul>
 
                     <div className={styles.links}>
-                        {project.urlPage && (
-                            <a href={project.urlPage} target="_blank" rel="noreferrer" className={styles.primario}>
+                        {projeto.urlPagina && (
+                            <a href={projeto.urlPagina} target="_blank" rel="noreferrer" className={styles.primario}>
                                 <FaExternalLinkAlt /> Ver projeto
                             </a>
                         )}
-                        {project.urlCode && (
-                            <a href={project.urlCode} target="_blank" rel="noreferrer" className={styles.secundario}>
+                        {projeto.urlCodigo && (
+                            <a href={projeto.urlCodigo} target="_blank" rel="noreferrer" className={styles.secundario}>
                                 <FaGithub /> Código fonte
                             </a>
                         )}

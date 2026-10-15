@@ -1,6 +1,7 @@
 import { FaDesktop, FaServer, FaInfinity, FaDatabase, FaToolbox } from 'react-icons/fa'
-import skills from '../../assets/consts/skills'
+import { useConteudo } from '../../hooks/useConteudo'
 import CardCategoriaHabilidades from '../Card/CardCategoriaHabilidades'
+import EstadoConteudo from '../layout/EstadoConteudo'
 import SecaoEscura from '../layout/SecaoEscura'
 import styles from './Skills.module.css'
 
@@ -13,22 +14,26 @@ const CATEGORIAS = [
 ]
 
 function Skills() {
+    const { habilidades, carregando, erro } = useConteudo()
+
     return (
         <SecaoEscura id="skills" etiqueta="<stack />" titulo="Tecnologias">
-            <div className={styles.categorias}>
-                {CATEGORIAS.map(({ nome, icone }) => {
-                    const habilidades = skills.filter((skill) => skill.categoria === nome)
-                    if (habilidades.length === 0) return null
-                    return (
-                        <CardCategoriaHabilidades
-                            key={nome}
-                            titulo={nome}
-                            icone={icone}
-                            habilidades={habilidades}
-                        />
-                    )
-                })}
-            </div>
+            <EstadoConteudo
+                carregando={carregando}
+                erro={erro}
+                vazio={habilidades.length === 0}
+                mensagemVazia="Nenhuma tecnologia cadastrada."
+            >
+                <div className={styles.categorias}>
+                    {CATEGORIAS.map(({ nome, icone }) => {
+                        const doGrupo = habilidades.filter((habilidade) => habilidade.categoria === nome)
+                        if (doGrupo.length === 0) return null
+                        return (
+                            <CardCategoriaHabilidades key={nome} titulo={nome} icone={icone} habilidades={doGrupo} />
+                        )
+                    })}
+                </div>
+            </EstadoConteudo>
         </SecaoEscura>
     )
 }

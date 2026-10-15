@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef, useState } from 'react'
-import { listarTecnologias } from '../../utils/tecnologias'
 import styles from './CardProject.module.css'
 
 const MAX_LINHAS_TECNOLOGIAS = 2
@@ -29,31 +28,31 @@ function TecnologiasCompactas({ tecnologias }) {
     return (
         <ul className={styles.tecnologias} ref={listaRef} aria-label="Tecnologias">
             {tecnologias.slice(0, visiveis).map((tecnologia) => (
-                <li key={tecnologia}>{tecnologia}</li>
+                <li key={tecnologia.id}>{tecnologia.nome}</li>
             ))}
             {restantes > 0 && <li className={styles.mais}>Mais {restantes}...</li>}
         </ul>
     )
 }
 
-/** Cartão de projeto. Props: `project` e `aoVerDetalhes` (callback ao clicar no botão). */
-function CardProject({ project, aoVerDetalhes }) {
+/** Cartão de projeto. Props: `projeto` e `aoVerDetalhes` (callback ao clicar no botão). */
+function CardProject({ projeto, aoVerDetalhes }) {
     return (
         <article className={styles.card}>
             <div className={styles.imagem}>
-                <img src={project.images[0]} alt={`Imagem do projeto ${project.name}`} />
-                <span className={styles.categoria}>{project.categoria}</span>
+                {projeto.imagens[0] && <img src={projeto.imagens[0]} alt={`Imagem do projeto ${projeto.nome}`} />}
+                <span className={styles.categoria}>{projeto.categoria}</span>
             </div>
 
             <div className={styles.conteudo}>
                 <div className={styles.titulo}>
-                    <h3>{project.name}</h3>
-                    <span className={styles.ano}>{project.ano}</span>
+                    <h3>{projeto.nome}</h3>
+                    <span className={styles.ano}>{projeto.ano}</span>
                 </div>
 
-                <TecnologiasCompactas tecnologias={listarTecnologias(project.technologies)} />
+                <TecnologiasCompactas tecnologias={projeto.tecnologias} />
 
-                <button className={styles.botao} onClick={() => aoVerDetalhes(project)}>
+                <button className={styles.botao} onClick={() => aoVerDetalhes(projeto)}>
                     Ver detalhes
                 </button>
             </div>
