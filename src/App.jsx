@@ -4,7 +4,6 @@ import Container from "./components/layout/Container";
 
 // SECTIONS
 import Heroi from "./components/sections/Heroi"
-import AboutMe from './components/sections/AboutMe'
 import Skills from './components/sections/Skills'
 import Projects from './components/sections/Projects'
 import Contacts from './components/sections/Contacts'
@@ -20,7 +19,6 @@ function App() {
         <Experiences />
         <Skills/>
         <Projects />
-        <AboutMe />
         <Contacts />
       </Container>
     </div>

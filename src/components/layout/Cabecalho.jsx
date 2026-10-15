@@ -8,7 +8,6 @@ const LINKS = [
     { id: 'experiences', rotulo: 'Experiências' },
     { id: 'skills', rotulo: 'Habilidades' },
     { id: 'projects', rotulo: 'Projetos' },
-    { id: 'aboutme', rotulo: 'Sobre mim' },
 ]
 
 function Cabecalho() {
