@@ -6,7 +6,10 @@
 
 ## Seções
 - **Heroi** (`sections/Heroi.jsx`) — hero interativa: saudação por horário, papéis digitados, carrossel horizontal com 5 logos de tecnologias que giram, destacam o da frente por 2s e são trocados ao passar pelo fundo, selos de hora de Brasília e dados do GitHub, contadores animados e brilho que segue o mouse. Sem props.
-- **Experiences**, **Skills**, **Projects**, **AboutMe**, **Contacts** — seções da página.
+- **Experiences** (`sections/Experiences.jsx`) — experiências profissionais exibidas em `Carrossel` com `CardExperience`.
+- **Skills**, **Projects**, **AboutMe**, **Contacts** — seções da página.
 
 ## Cartões / Modal
-- **CardExperience**, **CardSkill**, **CardProject**, **CardContact**, **ModalProject** — apresentação de itens das seções.
+- **Carrossel** (`Carrossel/Carrossel.jsx`) — carrossel genérico com snap, setas, indicadores, toque e teclado. Props: `children` (cada filho é um slide), `rotulo`.
+- **CardExperience** (`Card/CardExperience.jsx`) — cartão de experiência: logo, empresa, cargo, período ("atual" se sem `endDate`), descrição e tecnologias como chips. Props: `experience`.
+- **CardSkill**, **CardProject**, **CardContact**, **ModalProject** — apresentação de itens das seções.

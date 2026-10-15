@@ -1,79 +1,95 @@
 .card {
-    padding: 1.5em;
-    display: inline-block;
-    max-width: 400px;
-    margin: 1.5em;
-    border: 2px solid #37c9ef;
-    border-radius: 12px;
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: slideInUp 0.6s ease-out;
-    color: #f6f6f6;
-    box-shadow: 0 4px 12px rgba(51, 51, 49, 0.1);
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  gap: 2rem;
+  height: 100%;
+  padding: 2rem;
+  text-align: left;
+  color: #f6f6f6;
+  border: 1px solid rgba(79, 125, 255, 0.35);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(12, 59, 176, 0.18), rgba(41, 41, 40, 0.6));
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 28px rgba(55, 201, 239, 0.2);
-    border-color: #37c9ef;
+.imagem {
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: #fff;
 }
 
-.image_experience {
-    margin: 1em 0;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.35s ease;
+.imagem img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
 }
 
-.image_experience img {
-    transition: transform 0.35s ease;
-    border-radius: 8px;
-    padding: 1rem;
+.conteudo {
+  min-width: 0;
 }
 
-.card:hover .image_experience img {
-    transform: scale(1.05);
+.periodo {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.card h5 {
-    color: #f6f6f6;
-    font-weight: 700;
-    margin: 1em 0 0.5em 0;
+.periodoAtual {
+  border-color: #3ddc84;
+  color: #3ddc84;
+  background: rgba(61, 220, 132, 0.1);
 }
 
-.card p {
-    color: #f6f6f6;
+.empresa {
+  margin-bottom: 0.25rem;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 700;
 }
 
-.card p span {
-    font-weight: bold;
-    color: #37c9ef;
+.cargo {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #8fb0ff;
 }
 
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.descricao {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tecnologias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.tecnologias li {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid rgba(79, 125, 255, 0.45);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: #cfdcff;
+  background: rgba(12, 59, 176, 0.25);
 }
 
 @media (max-width: 768px) {
-    .card {
-        max-width: 400px;
-        margin: 1em;
-        p {
-            font-size: 15px;
-        }
-    }
-}
+  .card {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
 
-@media (max-width: 375px) {
-    .card {
-        width: 100%;
-        padding: 1em;
-        margin: 0.75em;
-    }
+  .imagem img {
+    max-height: 140px;
+  }
 }

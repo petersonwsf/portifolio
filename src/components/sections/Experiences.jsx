@@ -1,13 +1,16 @@
 import experiences from '../../assets/consts/experiences'
 import CardExperience from '../Card/CardExperience'
+import Carrossel from '../Carrossel/Carrossel'
 
 function Experiences() {
     return (
         <section id="experiences" className='section_black'>
             <h2 className='display-6 title_white'>Experiências</h2>
-            <div className="d-flex flex-wrap justify-content-center">
-                {experiences.map((experience, index) => <CardExperience key={index} experience={experience}/>)}
-            </div>
+            <Carrossel rotulo="Experiências profissionais">
+                {experiences.map((experience) => (
+                    <CardExperience key={`${experience.name}-${experience.startDate.getTime()}`} experience={experience} />
+                ))}
+            </Carrossel>
         </section>
     )
 }
