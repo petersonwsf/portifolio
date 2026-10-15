@@ -20,5 +20,5 @@
 - **CardCategoriaHabilidades** (`Card/CardCategoriaHabilidades.jsx`) — cartão de uma classificação com lista de habilidades. Props: `titulo`, `icone`, `habilidades`.
 - **CardSkill** (`Card/CardSkill.jsx`) — item da lista: ícone + rótulo. Props: `skill`.
 - **Projects** (`sections/Projects.jsx`) — projetos em `CarrosselFaixa` (vários cards visíveis, avança/volta pelos botões) com `CardProject`; gerencia o `ModalProject` aberto.
-- **CardProject** (`Card/CardProject.jsx`) — imagem, categoria, ano, nome, tecnologias (até 3 + "Mais x...") e botão "Ver detalhes". Props: `project`, `aoVerDetalhes`.
+- **CardProject** (`Card/CardProject.jsx`) — imagem, categoria, ano, nome, tecnologias (até 2 linhas + "Mais x...") e botão "Ver detalhes". Props: `project`, `aoVerDetalhes`.
 - **ModalProject** (`Modal/ModalProject.jsx`) — modal (portal) com galeria, descrição, todas as tecnologias com ícone e links. Props: `project`, `aoFechar`.
