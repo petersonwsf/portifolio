@@ -1,69 +1,41 @@
-.card {
-    text-align: center;
-    padding: 2em;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    margin: 1em 2em;
-    background: linear-gradient(135deg, rgba(55, 201, 239, 0.1) 0%, rgba(51, 51, 49, 0.05) 100%);
-    border: 1px solid var(--skill-color);
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    animation: scaleIn 0.6s ease-out;
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+  border: 1px solid rgba(79, 125, 255, 0.35);
+  border-radius: 12px;
+  background: rgba(12, 59, 176, 0.18);
+  box-shadow: 0 6px 18px rgba(12, 59, 176, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.card:hover {
-    transform: scale(1.15) rotateZ(5deg);
-    box-shadow: 0 12px 24px var(--skill-color);
-    background: linear-gradient(135deg, rgba(55, 201, 239, 0.15) 0%, rgba(51, 51, 49, 0.08) 100%);
+.item:hover {
+  transform: translateY(-3px);
+  border-color: #4f7dff;
+  box-shadow: 0 10px 26px rgba(12, 59, 176, 0.55);
 }
 
-.card img {
-    width: 75px;
-    height: 75px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-    transition: all 0.35s ease;
+.icone {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #fff;
 }
 
-.card:hover img {
-    filter: drop-shadow(0 4px 8px var(--skill-color));
-    transform: scale(1.1);
+.icone img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
 }
 
-.card p {
-    color: #333331;
-    font-weight: 500;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 100%;
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@media (max-width: 375px) {
-    .card {
-        width: 150px;
-        height: 150px;
-        padding: 2em;
-        margin: 0.75em;
-    }
-    .card img {
-        width: 50px;
-        height: 50px;
-    }
-    .card p {
-        font-size: 0.85rem;
-    }
+.rotulo {
+  min-width: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f6f6f6;
+  text-align: left;
 }

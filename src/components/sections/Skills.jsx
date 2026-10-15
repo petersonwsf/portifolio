@@ -1,16 +1,35 @@
-import CardSkill from "../Card/CardSkill"
-import skills from "../../assets/consts/skills"
+import { FaDesktop, FaServer, FaInfinity, FaDatabase, FaToolbox } from 'react-icons/fa'
+import skills from '../../assets/consts/skills'
+import CardCategoriaHabilidades from '../Card/CardCategoriaHabilidades'
+import SecaoEscura from '../layout/SecaoEscura'
+import styles from './Skills.module.css'
+
+const CATEGORIAS = [
+    { nome: 'Frontend', icone: <FaDesktop /> },
+    { nome: 'Backend', icone: <FaServer /> },
+    { nome: 'DevOps', icone: <FaInfinity /> },
+    { nome: 'Dados', icone: <FaDatabase /> },
+    { nome: 'Outros', icone: <FaToolbox /> },
+]
 
 function Skills() {
     return (
-        <section id="skills">
-            <h2 className="display-6">Habilidades</h2>
-            <div className="d-flex flex-wrap justify-content-center">
-                {skills.map((skill, index) => (
-                    <CardSkill key={index} skill={skill}/>
-                ))}
+        <SecaoEscura id="skills" etiqueta="<stack />" titulo="Habilidades">
+            <div className={styles.categorias}>
+                {CATEGORIAS.map(({ nome, icone }) => {
+                    const habilidades = skills.filter((skill) => skill.categoria === nome)
+                    if (habilidades.length === 0) return null
+                    return (
+                        <CardCategoriaHabilidades
+                            key={nome}
+                            titulo={nome}
+                            icone={icone}
+                            habilidades={habilidades}
+                        />
+                    )
+                })}
             </div>
-        </section>
+        </SecaoEscura>
     )
 }
 

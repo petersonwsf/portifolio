@@ -1,0 +1,64 @@
+.card {
+  flex: 1 1 320px;
+  max-width: 380px;
+  padding: 1.25rem;
+  text-align: left;
+  border: 1px solid rgba(79, 125, 255, 0.35);
+  border-radius: 16px;
+  background: rgba(20, 20, 20, 0.7);
+  box-shadow: 0 0 0 1px rgba(12, 59, 176, 0.25), 0 20px 50px rgba(12, 59, 176, 0.3);
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.icone {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  color: #fff;
+  background: #0c3bb0;
+  box-shadow: 0 6px 20px rgba(12, 59, 176, 0.6);
+}
+
+.titulo {
+  flex: 1;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.quantidade {
+  padding: 0.1rem 0.7rem;
+  border: 1px solid rgba(79, 125, 255, 0.45);
+  border-radius: 50px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #8fb0ff;
+  background: rgba(12, 59, 176, 0.2);
+}
+
+.lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 420px) {
+  .lista {
+    grid-template-columns: 1fr;
+  }
+}
