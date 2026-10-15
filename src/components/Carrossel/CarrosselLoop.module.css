@@ -1,0 +1,45 @@
+.janela {
+  position: relative;
+  overflow: hidden;
+  /* espaço interno para as sombras dos cards não serem cortadas */
+  padding: 2rem 0 3rem;
+  margin: -2rem 0 -3rem;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+
+.trilho {
+  display: flex;
+  width: max-content;
+  animation: passar var(--duracao, 40s) linear infinite;
+}
+
+.janela:hover .trilho,
+.janela:focus-within .trilho {
+  animation-play-state: paused;
+}
+
+.grupo {
+  display: flex;
+}
+
+.item {
+  display: flex;
+  flex: 0 0 auto;
+  padding: 0 0.9rem;
+}
+
+@keyframes passar {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .janela {
+    overflow-x: auto;
+  }
+
+  .trilho {
+    animation: none;
+  }
+}

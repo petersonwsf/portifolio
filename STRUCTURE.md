@@ -12,7 +12,7 @@ Site público do portfólio (React + Vite, CSS Modules + Bootstrap).
   - `useGithub.js` — busca dados públicos do GitHub (com fallback silencioso).
 - `src/components/layout/` — `Cabecalho` (menu fixo), `Container`.
 - `src/components/sections/` — seções da página (`Heroi`, `Experiences`, `Skills`, `Projects`, `AboutMe`, `Contacts`).
-- `src/components/Carrossel/` — `Carrossel` genérico reutilizável.
+- `src/components/Carrossel/` — `Carrossel` (slides com setas) e `CarrosselLoop` (marquee contínuo).
 - `src/components/Card/`, `src/components/Modal/` — cartões e modal de projeto.
 - `src/assets/consts/` — dados estáticos (projetos, habilidades, experiências).
 - `src/assets/img/` — imagens.

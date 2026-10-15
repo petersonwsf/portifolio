@@ -1,102 +1,120 @@
 .card {
-    padding: 1.5em;
-    display: inline-block;
-    max-width: 300px;
-    margin: 1.5em;
-    border: 1px solid #37c9ef;
-    border-radius: 12px;
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: slideInUp 0.6s ease-out;
-    color: #f6f6f6;
-    box-shadow: 0 4px 12px rgba(51, 51, 49, 0.1);
-    text-align: center;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  color: #f6f6f6;
+  border: 1px solid rgba(79, 125, 255, 0.45);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(20, 20, 20, 0.55);
+  box-shadow: 0 10px 30px rgba(12, 59, 176, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 28px rgba(55, 201, 239, 0.2);
-    border-color: #37c9ef;
+  transform: translateY(-6px);
+  border-color: #4f7dff;
+  box-shadow: 0 16px 40px rgba(12, 59, 176, 0.45);
 }
 
-.image_project {
-    margin: 1em 0;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.35s ease;
+.imagem {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #1a1a19;
 }
 
-.image_project img {
-    transition: transform 0.35s ease;
-    border-radius: 8px;
+.imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-.card:hover .image_project img {
-    transform: scale(1.05);
+.card:hover .imagem img {
+  transform: scale(1.06);
 }
 
-.card h5 {
-    color: #f6f6f6;
-    font-weight: 700;
-    margin: 1em 0 0.5em 0;
+.categoria {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #fff;
+  background: #0c3bb0;
+  box-shadow: 0 4px 14px rgba(12, 59, 176, 0.6);
 }
 
-.card p {
-    font-size: 15px;
-    color: #f6f6f6;
-    margin: 0.5em 0;
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  flex: 1;
+  padding: 1.1rem 1.1rem 1.25rem;
 }
 
-.card p span {
-    font-weight: bold;
-    color: #37c9ef;
+.titulo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
-.detailsBtn {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #fff;
-    background-color: #37c9ef;
-    border: 2px solid #37c9ef;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.titulo h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
 }
 
-.detailsBtn:hover {
-    background-color: transparent;
-    color: #37c9ef;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(55, 201, 239, 0.3);
+.ano {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #8fb0ff;
 }
 
-.detailsBtn:active {
-    transform: translateY(0px);
+.tecnologias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.tecnologias li {
+  padding: 0.15rem 0.6rem;
+  border: 1px solid rgba(79, 125, 255, 0.4);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  color: #cfdcff;
+  background: rgba(12, 59, 176, 0.2);
 }
 
-@media (max-width: 768px) {
-    .card {
-        max-width: 100%;
-        margin: 1em;
-    }
+.botao {
+  margin-top: auto;
+  padding: 0.6rem 1rem;
+  border: 2px solid #0c3bb0;
+  border-radius: 50px;
+  background: #0c3bb0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@media (max-width: 375px) {
-    .card {
-        padding: 1em;
-        margin: 0.75em;
-    }
+.botao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(12, 59, 176, 0.55);
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 260px;
+  }
 }

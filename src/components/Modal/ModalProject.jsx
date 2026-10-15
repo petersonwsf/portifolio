@@ -1,43 +1,112 @@
-import { useState } from "react"
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { FaTimes, FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import styles from './ModalProject.module.css'
 
-function ModalProject({project}) {
+/** Modal de detalhes do projeto. Props: `project` e `aoFechar`. */
+function ModalProject({ project, aoFechar }) {
+    const [indiceImagem, setIndiceImagem] = useState(0)
+    const total = project.images.length
+    const tecnologias = project.technologies.split(',').map((tecnologia) => tecnologia.trim())
 
-    const [indexImage, setIndexImage] = useState(0)
+    useEffect(() => {
+        const aoTeclar = (evento) => {
+            if (evento.key === 'Escape') aoFechar()
+            if (evento.key === 'ArrowRight') setIndiceImagem((atual) => (atual + 1) % total)
+            if (evento.key === 'ArrowLeft') setIndiceImagem((atual) => (atual - 1 + total) % total)
+        }
+        const overflowAnterior = document.body.style.overflow
+        document.body.style.overflow = 'hidden'
+        document.addEventListener('keydown', aoTeclar)
+        return () => {
+            document.body.style.overflow = overflowAnterior
+            document.removeEventListener('keydown', aoTeclar)
+        }
+    }, [aoFechar, total])
 
-    return (
-        <div className="modal fade" id={project.id} tabIndex="-1" aria-hidden="true">
-            <div className="modal-dialog modal-xl modal-dialog-scrollable">
-                <div className={`modal-content ${styles.modalContent}`}>
-                    <div className="modal-header d-flex justify-content-between">
-                        <h4 className="modal-title fs-5" id="exampleModalLabel">{project.name}</h4>
-                        <ion-icon style={{color: '#37c9ef', fontSize: '30px', cursor: 'pointer'}} data-bs-dismiss="modal" aria-label="Close" name="close-outline"></ion-icon>
+    return createPortal(
+        <div className={styles.fundo} onClick={aoFechar}>
+            <div
+                className={styles.modal}
+                role="dialog"
+                aria-modal="true"
+                aria-label={`Detalhes do projeto ${project.name}`}
+                onClick={(evento) => evento.stopPropagation()}
+            >
+                <button className={styles.fechar} onClick={aoFechar} aria-label="Fechar">
+                    <FaTimes />
+                </button>
+
+                <div className={styles.galeria}>
+                    <div className={styles.imagemPrincipal}>
+                        {total > 1 && (
+                            <button
+                                className={`${styles.seta} ${styles.anterior}`}
+                                onClick={() => setIndiceImagem((atual) => (atual - 1 + total) % total)}
+                                aria-label="Imagem anterior"
+                            >
+                                <FaChevronLeft />
+                            </button>
+                        )}
+                        <img src={project.images[indiceImagem]} alt={`${project.name} - imagem ${indiceImagem + 1}`} />
+                        {total > 1 && (
+                            <button
+                                className={`${styles.seta} ${styles.proxima}`}
+                                onClick={() => setIndiceImagem((atual) => (atual + 1) % total)}
+                                aria-label="Próxima imagem"
+                            >
+                                <FaChevronRight />
+                            </button>
+                        )}
                     </div>
-                    <div className="modal-body py-5">
-                        <div className={`w-100 d-flex align-items-center justify-content-center ${styles.image} mb-3`}>
-                            <img src={project.images[indexImage]} alt="Imagem do projeto"/>
-                        </div>
-                        <div className={`d-flex justify-content-center flex-wrap mb-3 px-2 ${styles.images_project}`}>
-                            {project.images.map((image, index) => (
-                                <img src={image} key={index} onClick={() => setIndexImage(index)} alt="Imagem do projeto" className="mx-2" style={{boxShadow: image === project.images[indexImage] ? '0 0 12px #37c9ef' : "none"}}/>
+
+                    {total > 1 && (
+                        <div className={styles.miniaturas}>
+                            {project.images.map((imagem, indice) => (
+                                <button
+                                    key={indice}
+                                    className={`${styles.miniatura} ${indice === indiceImagem ? styles.miniaturaAtiva : ''}`}
+                                    onClick={() => setIndiceImagem(indice)}
+                                    aria-label={`Ver imagem ${indice + 1}`}
+                                >
+                                    <img src={imagem} alt="" />
+                                </button>
                             ))}
                         </div>
-                        <div className={styles.technologies}>
-                            <p className="lead"><span>Tecnologias: </span> {project.technologies}</p>
-                        </div>
-                        <div className={`${styles.description}`}>
-                             <p className="lead">
-                                {project.details}
-                             </p>
-                        </div>
-                        <div className={`d-flex justify-content-end ${styles.links}`}>
-                            {project.urlPage && <a target="_blank" href={project.urlPage} className={styles.btnPrimary}><ion-icon name="code-slash-outline"></ion-icon>Ver projeto</a>}
-                            <a target="_blank" href={project.urlCode} className={styles.btnSecondary}><ion-icon name="logo-github"></ion-icon>Ver código fonte</a>
-                        </div>
+                    )}
+                </div>
+
+                <div className={styles.info}>
+                    <div className={styles.meta}>
+                        <span className={styles.categoria}>{project.categoria}</span>
+                        <span className={styles.ano}>{project.ano}</span>
+                    </div>
+                    <h3 className={styles.titulo}>{project.name}</h3>
+                    <p className={styles.descricao}>{project.details}</p>
+
+                    <h4 className={styles.subtitulo}>Tecnologias</h4>
+                    <ul className={styles.tecnologias}>
+                        {tecnologias.map((tecnologia) => (
+                            <li key={tecnologia}>{tecnologia}</li>
+                        ))}
+                    </ul>
+
+                    <div className={styles.links}>
+                        {project.urlPage && (
+                            <a href={project.urlPage} target="_blank" rel="noreferrer" className={styles.primario}>
+                                <FaExternalLinkAlt /> Ver projeto
+                            </a>
+                        )}
+                        {project.urlCode && (
+                            <a href={project.urlCode} target="_blank" rel="noreferrer" className={styles.secundario}>
+                                <FaGithub /> Código fonte
+                            </a>
+                        )}
                     </div>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     )
 }
 

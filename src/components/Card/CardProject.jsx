@@ -1,25 +1,33 @@
 import styles from './CardProject.module.css'
 
-import ModalProject from '../Modal/ModalProject'
-
-function CardProject({project}) {
+/** Cartão de projeto. Props: `project` e `aoVerDetalhes` (callback ao clicar no botão). */
+function CardProject({ project, aoVerDetalhes }) {
+    const tecnologias = project.technologies.split(',').map((tecnologia) => tecnologia.trim())
 
     return (
-        <>
-            <div className={styles.card}>
-                <div className={styles.image_project}>
-                    <img src={`${project.images[0]}`} alt="Imagem do projeto" className='w-100'/>
-                </div>
-                <div className="text-start">
-                    <h5>{project.name}</h5>
-                    <p className='lead'><span>Tecnologias: </span>{project.technologies}</p>
-                    <div className="text-center mt-3">
-                        <button data-bs-toggle="modal" data-bs-target={`#${project.id}`} className={styles.detailsBtn}>Ver detalhes</button>   
-                    </div>
-                </div>
+        <article className={styles.card}>
+            <div className={styles.imagem}>
+                <img src={project.images[0]} alt={`Imagem do projeto ${project.name}`} loading="lazy" />
+                <span className={styles.categoria}>{project.categoria}</span>
             </div>
-            <ModalProject project={project}/>
-        </>
+
+            <div className={styles.conteudo}>
+                <div className={styles.titulo}>
+                    <h3>{project.name}</h3>
+                    <span className={styles.ano}>{project.ano}</span>
+                </div>
+
+                <ul className={styles.tecnologias} aria-label="Tecnologias">
+                    {tecnologias.map((tecnologia) => (
+                        <li key={tecnologia}>{tecnologia}</li>
+                    ))}
+                </ul>
+
+                <button className={styles.botao} onClick={() => aoVerDetalhes(project)}>
+                    Ver detalhes
+                </button>
+            </div>
+        </article>
     )
 }
 

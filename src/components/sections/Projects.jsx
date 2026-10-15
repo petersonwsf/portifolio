@@ -1,16 +1,24 @@
-import CardProject from "../Card/CardProject"
-import projects from "../../assets/consts/projects"
+import { useCallback, useState } from 'react'
+import projects from '../../assets/consts/projects'
+import CardProject from '../Card/CardProject'
+import CarrosselLoop from '../Carrossel/CarrosselLoop'
+import ModalProject from '../Modal/ModalProject'
+import SecaoEscura from '../layout/SecaoEscura'
 
 function Projects() {
+    const [projetoSelecionado, setProjetoSelecionado] = useState(null)
+    const fecharModal = useCallback(() => setProjetoSelecionado(null), [])
+
     return (
-        <section id="projects" className="section_black">
-            <h2 className="display-6 title_white">Projetos</h2>
-            <div className="d-flex flex-wrap justify-content-center">
-                {projects.map((project, index) => (
-                    <CardProject key={index} project={project}/>
+        <SecaoEscura id="projects" etiqueta="<projetos />" titulo="Projetos">
+            <CarrosselLoop rotulo="Projetos" duracao={60}>
+                {projects.map((project) => (
+                    <CardProject key={project.id} project={project} aoVerDetalhes={setProjetoSelecionado} />
                 ))}
-            </div>
-        </section>
+            </CarrosselLoop>
+
+            {projetoSelecionado && <ModalProject project={projetoSelecionado} aoFechar={fecharModal} />}
+        </SecaoEscura>
     )
 }
 
