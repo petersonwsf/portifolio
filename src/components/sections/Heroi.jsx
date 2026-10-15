@@ -5,7 +5,8 @@ import { ptBR } from 'date-fns/locale'
 import useDigitacao from '../../hooks/useDigitacao'
 import useContagem from '../../hooks/useContagem'
 import useGithub from '../../hooks/useGithub'
-import useCarrossel from '../../hooks/useCarrossel'
+import useRodizio from '../../hooks/useRodizio'
+import foto from '../../assets/img/eu.jpeg'
 import projetos from '../../assets/consts/projects'
 import habilidades from '../../assets/consts/skills'
 import experiencias from '../../assets/consts/experiences'
@@ -68,22 +69,8 @@ function Heroi() {
     const irParaSecao = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
     const todasTecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage && habilidade.name !== 'GitHub'), [])
-    const { passo, itens: tecnologias } = useCarrossel(todasTecnologias, 5, 2000)
-    const total = tecnologias.length
-    const indiceFrontal = ((passo % total) + total) % total
-    const frontal = tecnologias[indiceFrontal]
+    const tecnologias = useRodizio(todasTecnologias, 8, 2500)
 
-    const estiloSatelite = (indice) => {
-        const angulo = ((indice - passo) * 2 * Math.PI) / total
-        const profundidade = Math.cos(angulo)
-        const destaque = indice === indiceFrontal
-        const escala = destaque ? 1.8 : 0.55 + 0.35 * ((profundidade + 1) / 2)
-        return {
-            transform: `translate(calc(-50% + var(--raio-x) * ${Math.sin(angulo).toFixed(4)}), calc(-50% + var(--raio-y) * ${profundidade.toFixed(4)})) scale(${escala.toFixed(3)})`,
-            opacity: destaque ? 1 : 0.25 + 0.5 * ((profundidade + 1) / 2),
-            zIndex: destaque ? 20 : Math.round((profundidade + 1) * 5),
-        }
-    }
     const ultimaAtividade = github?.ultimoPush
         ? formatDistanceToNowStrict(new Date(github.ultimoPush), { addSuffix: true, locale: ptBR })
         : null
@@ -125,19 +112,19 @@ function Heroi() {
                     </div>
                 </div>
 
-                <aside className={styles.orbita} aria-label="Tecnologias que utilizo">
-                    <div className={styles.carrossel}>
+                <aside className={styles.orbita} aria-label="Foto e tecnologias">
+                    <div className={styles.anel}>
                         {tecnologias.map((tecnologia, indice) => (
                             <span
                                 key={indice}
-                                className={`${styles.satelite} ${indice === indiceFrontal ? styles.frontal : ''}`}
-                                style={estiloSatelite(indice)}
+                                className={styles.satelite}
+                                style={{ '--angulo': `${(360 / tecnologias.length) * indice}deg` }}
                             >
                                 <img key={tecnologia.name} src={tecnologia.urlImage} alt={tecnologia.name} title={tecnologia.name} />
                             </span>
                         ))}
                     </div>
-                    <p className={styles.nomeTecnologia} aria-live="off">{frontal.name}</p>
+                    <img src={foto} alt="Peterson William" className={styles.foto} />
                     <div className={`${styles.selo} ${styles.seloHora}`}>
                         <span>{formatadorHora.format(agora)}</span>
                         <small>Brasília</small>

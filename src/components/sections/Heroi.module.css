@@ -153,23 +153,36 @@
 }
 
 .orbita {
-  --raio-x: calc(50cqw - 50px);
-  --raio-y: 40px;
+  --raio: calc(50cqw - 30px);
   container-type: inline-size;
   position: relative;
-  width: min(100%, 460px);
+  width: min(100%, 420px);
+  aspect-ratio: 1;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 2rem 0 3.5rem;
+  display: grid;
+  place-items: center;
 }
 
-.carrossel {
-  position: relative;
-  width: 100%;
-  height: 190px;
+.foto {
+  width: 56%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #0c3bb0;
+  box-shadow: 0 0 0 8px rgba(12, 59, 176, 0.18), 0 20px 60px rgba(12, 59, 176, 0.55);
+}
+
+.anel {
+  position: absolute;
+  inset: 30px;
+  border: 1px dashed rgba(79, 125, 255, 0.4);
+  border-radius: 50%;
+  animation: girar 45s linear infinite;
+}
+
+.orbita:hover .anel,
+.orbita:hover .satelite {
+  animation-play-state: paused;
 }
 
 .satelite {
@@ -178,12 +191,13 @@
   left: 50%;
   width: 52px;
   height: 52px;
+  margin: -26px 0 0 -26px;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-  transition: transform 0.7s cubic-bezier(0.45, 0, 0.2, 1), opacity 0.7s ease;
+  box-shadow: 0 6px 20px rgba(12, 59, 176, 0.55);
+  animation: contragirar 45s linear infinite;
 }
 
 .satelite img {
@@ -193,19 +207,18 @@
   animation: entrar 0.6s ease-out;
 }
 
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes contragirar {
+  from { transform: rotate(var(--angulo)) translateY(calc(var(--raio) * -1)) rotate(calc(var(--angulo) * -1)); }
+  to { transform: rotate(var(--angulo)) translateY(calc(var(--raio) * -1)) rotate(calc(var(--angulo) * -1 - 360deg)); }
+}
+
 @keyframes entrar {
   from { opacity: 0; transform: scale(0.3); }
   to { opacity: 1; transform: scale(1); }
-}
-
-.frontal {
-  box-shadow: 0 0 0 4px rgba(79, 125, 255, 0.45), 0 0 40px rgba(12, 59, 176, 0.9);
-}
-
-.nomeTecnologia {
-  font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 1.1rem;
-  color: #8fb0ff;
 }
 
 .selo {
@@ -230,14 +243,14 @@
 }
 
 .seloHora {
-  bottom: 0;
-  left: 0;
+  bottom: -6%;
+  left: -2%;
   font-family: 'Consolas', 'Courier New', monospace;
 }
 
 .seloGithub {
-  bottom: 0;
-  right: 0;
+  bottom: -6%;
+  right: -2%;
   max-width: 55%;
 }
 
@@ -283,7 +296,6 @@
   }
 
   .orbita {
-    --raio-y: 30px;
     width: min(100%, 340px);
   }
 }
@@ -301,9 +313,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .anel,
   .satelite,
   .satelite img {
-    transition: none;
     animation: none;
   }
 
