@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { FaGithub, FaArrowDown, FaCircle } from 'react-icons/fa'
 import { formatDistanceToNowStrict } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
@@ -56,7 +56,6 @@ function Estatistica({ valor, rotulo }) {
 }
 
 function Heroi() {
-    const secaoRef = useRef(null)
     const [agora, setAgora] = useState(() => new Date())
     const papel = useDigitacao(PAPEIS)
     const github = useGithub()
@@ -65,18 +64,6 @@ function Heroi() {
         const intervalo = setInterval(() => setAgora(new Date()), 1000)
         return () => clearInterval(intervalo)
     }, [])
-
-    const aoMoverMouse = (evento) => {
-        const secao = secaoRef.current
-        if (!secao) return
-        const caixa = secao.getBoundingClientRect()
-        const x = evento.clientX - caixa.left
-        const y = evento.clientY - caixa.top
-        secao.style.setProperty('--mouse-x', `${x}px`)
-        secao.style.setProperty('--mouse-y', `${y}px`)
-        secao.style.setProperty('--inclinacao-x', `${(x / caixa.width - 0.5) * 8}deg`)
-        secao.style.setProperty('--inclinacao-y', `${(0.5 - y / caixa.height) * 8}deg`)
-    }
 
     const irParaSecao = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
@@ -102,7 +89,7 @@ function Heroi() {
         : null
 
     return (
-        <section id="hero" ref={secaoRef} className={styles.heroi} onMouseMove={aoMoverMouse}>
+        <section id="hero" className={styles.heroi}>
             <div className={styles.grade} aria-hidden="true" />
             <div className={styles.brilho} aria-hidden="true" />
 

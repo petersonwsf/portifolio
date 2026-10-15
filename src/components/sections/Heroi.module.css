@@ -1,9 +1,4 @@
 .heroi {
-  --mouse-x: 50%;
-  --mouse-y: 40%;
-  --inclinacao-x: 0deg;
-  --inclinacao-y: 0deg;
-
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -25,19 +20,17 @@
     linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), #000 0%, transparent 65%);
-  -webkit-mask-image: radial-gradient(circle at var(--mouse-x) var(--mouse-y), #000 0%, transparent 65%);
+  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 75%);
   pointer-events: none;
 }
 
 .brilho {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    600px circle at var(--mouse-x) var(--mouse-y),
-    rgba(12, 59, 176, 0.45),
-    transparent 60%
-  );
+  background:
+    radial-gradient(500px circle at 15% 85%, rgba(12, 59, 176, 0.35), transparent 60%),
+    radial-gradient(500px circle at 85% 20%, rgba(12, 59, 176, 0.25), transparent 60%);
   pointer-events: none;
 }
 
