@@ -29,7 +29,7 @@ function Contacts() {
                 </div>
 
                 <div className={styles.redes}>
-                    <h3 className={styles.subtitulo}>Também estou por aqui</h3>
+                    <h3 className={styles.subtitulo}>Acompanhe meu trbalho por aqui também</h3>
                     {CONTATOS.map((contato) => (
                         <CardContact key={contato.label} contact={contato} />
                     ))}
