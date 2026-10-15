@@ -6,27 +6,31 @@ const COPIAS = 3
 
 /**
  * Carrossel em faixa contínua: mostra vários itens lado a lado e avança/volta um item
- * por clique nos botões, de forma circular (sem fim). Cada filho é um item.
+ * por clique nos botões, de forma circular (sem fim), mantendo o item atual centralizado.
+ * Cada filho é um item.
  * Props: `children`, `rotulo`.
  */
 function CarrosselFaixa({ children, rotulo = 'Carrossel' }) {
     const itens = Children.toArray(children)
     const total = itens.length
     const primeiroRef = useRef(null)
+    const janelaRef = useRef(null)
     const [posicao, setPosicao] = useState(total)
     const [passo, setPasso] = useState(0)
-    const [animando, setAnimando] = useState(true)
+    const [larguraJanela, setLarguraJanela] = useState(0)
+    const [animando, setAnimando] = useState(false)
 
     useEffect(() => {
         const medir = () => {
             if (primeiroRef.current) setPasso(primeiroRef.current.offsetWidth)
+            if (janelaRef.current) setLarguraJanela(janelaRef.current.clientWidth)
         }
         medir()
         window.addEventListener('resize', medir)
         return () => window.removeEventListener('resize', medir)
     }, [])
 
-    // reativa a transição no quadro seguinte ao reposicionamento silencioso
+    // (re)ativa a transição no quadro seguinte à medição inicial ou ao reposicionamento silencioso
     useEffect(() => {
         if (animando) return undefined
         const quadro = requestAnimationFrame(() => requestAnimationFrame(() => setAnimando(true)))
@@ -52,10 +56,10 @@ function CarrosselFaixa({ children, rotulo = 'Carrossel' }) {
 
     return (
         <div className={styles.carrossel} role="region" aria-roledescription="carrossel" aria-label={rotulo}>
-            <div className={styles.janela} tabIndex={0} onKeyDown={aoTeclar}>
+            <div className={styles.janela} ref={janelaRef} tabIndex={0} onKeyDown={aoTeclar}>
                 <div
                     className={`${styles.trilho} ${animando ? styles.animando : ''}`}
-                    style={{ transform: `translateX(${-posicao * passo}px)` }}
+                    style={{ transform: `translateX(${(larguraJanela - passo) / 2 - posicao * passo}px)` }}
                     onTransitionEnd={aoTerminarTransicao}
                 >
                     {Array.from({ length: COPIAS }).flatMap((_, copia) =>
