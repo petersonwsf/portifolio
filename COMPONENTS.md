@@ -13,14 +13,15 @@
 - **CarrosselFaixa** (`Carrossel/CarrosselFaixa.jsx`) — faixa contínua com vários itens visíveis que avança/volta um item por clique, de forma circular. Props: `children`, `rotulo`.
 - **Carrossel** (`Carrossel/Carrossel.jsx`) — carrossel genérico com snap, setas, indicadores, toque e teclado. Props: `children` (cada filho é um slide), `rotulo`.
 - **CardContact** (`Card/CardContact.jsx`) — link de contato externo (LinkedIn, GitHub). Props: `contact` ({ label, value, icone, link }).
-- **CardExperience** (`Card/CardExperience.jsx`) — cartão de experiência: logo, empresa, cargo, período ("atual" se sem `endDate`), descrição e tecnologias como chips. Props: `experience`.
+- **CardExperience** (`Card/CardExperience.jsx`) — cartão de experiência: logo, empresa, cargo, período ("atual" se sem `endDate`), descrição e tecnologias como chips. Props: `experiencia` ({ empresa, cargo, descricao, dataInicio, dataFim, imagem, tecnologias }).
 **CardProject** — apresentação de itens das seções.
 
-- **Skills** (`sections/Skills.jsx`) — habilidades agrupadas por classificação (Frontend, Backend, DevOps, Dados, Outros) via campo `categoria` de `assets/consts/skills.js`.
+- **Skills** (`sections/Skills.jsx`) — habilidades agrupadas por classificação (Frontend, Backend, DevOps, Dados, Outros) via campo `categoria` das habilidades vindas da API, com o nível de cada uma.
 - **CardCategoriaHabilidades** (`Card/CardCategoriaHabilidades.jsx`) — cartão de uma classificação com lista de habilidades. Props: `titulo`, `icone`, `habilidades`.
-- **CardSkill** (`Card/CardSkill.jsx`) — item da lista: ícone + rótulo. Props: `skill`.
+- **CardSkill** (`Card/CardSkill.jsx`) — item da lista: ícone + rótulo. Props: `habilidade` ({ nome, imagem, nivel }); mostra o nível com 3 círculos e rótulo.
 - **Projects** (`sections/Projects.jsx`) — projetos em `CarrosselFaixa` (vários cards visíveis, avança/volta pelos botões) com `CardProject`; gerencia o `ModalProject` aberto.
-- **CardProject** (`Card/CardProject.jsx`) — imagem, categoria, ano, nome, tecnologias (até 2 linhas + "Mais x...") e botão "Ver detalhes". Props: `project`, `aoVerDetalhes`.
-- **ModalProject** (`Modal/ModalProject.jsx`) — modal (portal) com galeria, descrição, todas as tecnologias com ícone e links. Props: `project`, `aoFechar`.
+- **CardProject** (`Card/CardProject.jsx`) — imagem, categoria, ano, nome, tecnologias (até 2 linhas + "Mais x...") e botão "Ver detalhes". Props: `projeto` ({ nome, categoria, ano, descricao, tecnologias, imagens, urlCodigo, urlPagina }), `aoVerDetalhes`.
+- **ModalProject** (`Modal/ModalProject.jsx`) — modal (portal) com galeria, descrição, todas as tecnologias com ícone e links. Props: `projeto`, `aoFechar`.
 - **Contacts** (`sections/Contacts.jsx`) — formulário de contato + links de LinkedIn e GitHub, em `SecaoEscura`.
 - **FormularioContato** (`Form/FormularioContato.jsx`) — formulário (nome, e-mail, assunto, mensagem) com validação no cliente; envia via `services/contato.js` (simulado por enquanto). Sem props.
+- **EstadoConteudo** (`layout/EstadoConteudo.jsx`) — exibe carregando/erro/vazio no lugar do conteúdo de uma seção. Props: `carregando`, `erro`, `vazio`, `mensagemVazia`, `children`.

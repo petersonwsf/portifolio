@@ -28,10 +28,46 @@
   filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 3px rgba(255, 255, 255, 0.25));
 }
 
-.rotulo {
+.texto {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: left;
+}
+
+.rotulo {
   font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  text-align: left;
+  color: rgba(255, 255, 255, 0.9);
+  overflow-wrap: anywhere;
+}
+
+.nivel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.circulos {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.circulo {
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(79, 125, 255, 0.7);
+  border-radius: 50%;
+}
+
+.circuloPreenchido {
+  background: #4f7dff;
+  border-color: #4f7dff;
+  box-shadow: 0 0 6px rgba(79, 125, 255, 0.7);
+}
+
+.nivelRotulo {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.55);
 }

@@ -1,0 +1,10 @@
+# Exemplo para o diretório de deploy na VPS (o workflow executa `docker compose pull <serviço> && up -d <serviço>` aqui; a tag é o nome da branch).
+services:
+  frontend:
+    image: ghcr.io/petersonwilliam-dev/portifolio:main
+    container_name: portfolio-frontend
+    restart: unless-stopped
+    ports:
+      # publicado só em localhost: o Caddy da VPS faz o reverse_proxy para esta porta.
+      # (se o seu Caddy roda em container, troque por uma rede Docker compartilhada)
+      - "127.0.0.1:8080:80"

@@ -4,9 +4,7 @@ import useDigitacao from '../../hooks/useDigitacao'
 import useContagem from '../../hooks/useContagem'
 import useRodizio from '../../hooks/useRodizio'
 import foto from '../../assets/img/eu.jpeg'
-import projetos from '../../assets/consts/projects'
-import habilidades from '../../assets/consts/skills'
-import experiencias from '../../assets/consts/experiences'
+import { useConteudo } from '../../hooks/useConteudo'
 import styles from './Heroi.module.css'
 
 const PAPEIS = [
@@ -28,8 +26,8 @@ const saudacaoPorHora = (data) => {
     return 'Boa noite'
 }
 
-const mesesDeExperiencia = () => {
-    const inicios = experiencias.map((item) => item.startDate.getTime())
+const mesesDeExperiencia = (experiencias) => {
+    const inicios = experiencias.map((item) => new Date(item.dataInicio).getTime())
     if (inicios.length === 0) return 0
     const inicio = new Date(Math.min(...inicios))
     const agora = new Date()
@@ -49,6 +47,7 @@ function Estatistica({ valor, rotulo }) {
 function Heroi() {
     const [agora, setAgora] = useState(() => new Date())
     const papel = useDigitacao(PAPEIS)
+    const { projetos, habilidades, experiencias } = useConteudo()
 
     useEffect(() => {
         const intervalo = setInterval(() => setAgora(new Date()), 1000)
@@ -57,7 +56,7 @@ function Heroi() {
 
     const irParaSecao = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
-    const todasTecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage && habilidade.name !== 'GitHub'), [])
+    const todasTecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.imagem), [habilidades])
     const tecnologias = useRodizio(todasTecnologias, 8, 2500)
 
     return (
@@ -98,6 +97,7 @@ function Heroi() {
                 </div>
 
                 <aside className={styles.orbita} aria-label="Foto e tecnologias">
+                    {tecnologias.length > 0 && (
                     <div className={styles.anel}>
                         {tecnologias.map((tecnologia, indice) => (
                             <span
@@ -105,10 +105,11 @@ function Heroi() {
                                 className={styles.satelite}
                                 style={{ '--angulo': `${(360 / tecnologias.length) * indice}deg` }}
                             >
-                                <img key={tecnologia.name} src={tecnologia.urlImage} alt={tecnologia.name} title={tecnologia.name} />
+                                <img key={tecnologia.id} src={tecnologia.imagem} alt={tecnologia.nome} title={tecnologia.nome} />
                             </span>
                         ))}
                     </div>
+                    )}
                     <img src={foto} alt="Peterson William" className={styles.foto} />
                 </aside>
             </div>
@@ -116,7 +117,7 @@ function Heroi() {
             <div className={styles.estatisticas}>
                 <Estatistica valor={projetos.length} rotulo="Projetos" />
                 <Estatistica valor={habilidades.length} rotulo="Tecnologias" />
-                <Estatistica valor={mesesDeExperiencia()} rotulo="Meses de experiência" />
+                <Estatistica valor={mesesDeExperiencia(experiencias)} rotulo="Meses de experiência" />
             </div>
         </section>
     )

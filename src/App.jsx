@@ -1,3 +1,6 @@
+// CONTEXTOS
+import { ProvedorConteudo } from "./contexts/ContextoConteudo";
+
 // LAYOUTS
 import Cabecalho from "./components/layout/Cabecalho";
 import Container from "./components/layout/Container";
@@ -12,7 +15,7 @@ import Experiences from "./components/sections/Experiences";
 function App() {
 
   return (
-    <div>
+    <ProvedorConteudo>
       <Cabecalho />
       <Heroi />
       <Container>
@@ -21,7 +24,7 @@ function App() {
         <Projects />
         <Contacts />
       </Container>
-    </div>
+    </ProvedorConteudo>
   )
 }
 

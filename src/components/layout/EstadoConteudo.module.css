@@ -1,0 +1,10 @@
+.estado {
+  margin: 0;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.erro {
+  color: #ff8a8a;
+}

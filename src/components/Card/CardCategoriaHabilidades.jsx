@@ -11,7 +11,7 @@ function CardCategoriaHabilidades({ titulo, icone, habilidades }) {
             </header>
             <ul className={styles.lista}>
                 {habilidades.map((habilidade) => (
-                    <CardSkill key={habilidade.name} skill={habilidade} />
+                    <CardSkill key={habilidade.id} habilidade={habilidade} />
                 ))}
             </ul>
         </article>

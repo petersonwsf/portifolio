@@ -1,16 +1,26 @@
-import experiences from '../../assets/consts/experiences'
+import { useConteudo } from '../../hooks/useConteudo'
 import CardExperience from '../Card/CardExperience'
 import Carrossel from '../Carrossel/Carrossel'
+import EstadoConteudo from '../layout/EstadoConteudo'
 import SecaoEscura from '../layout/SecaoEscura'
 
 function Experiences() {
+    const { experiencias, carregando, erro } = useConteudo()
+
     return (
         <SecaoEscura id="experiences" etiqueta="<trajetória />" titulo="Experiências">
-            <Carrossel rotulo="Experiências profissionais">
-                {experiences.map((experience) => (
-                    <CardExperience key={`${experience.name}-${experience.startDate.getTime()}`} experience={experience} />
-                ))}
-            </Carrossel>
+            <EstadoConteudo
+                carregando={carregando}
+                erro={erro}
+                vazio={experiencias.length === 0}
+                mensagemVazia="Nenhuma experiência cadastrada."
+            >
+                <Carrossel rotulo="Experiências profissionais">
+                    {experiencias.map((experiencia) => (
+                        <CardExperience key={experiencia.id} experiencia={experiencia} />
+                    ))}
+                </Carrossel>
+            </EstadoConteudo>
         </SecaoEscura>
     )
 }
