@@ -11,13 +11,14 @@
 - **AboutMe**, **Contacts** — seções da página.
 
 ## Cartões / Modal
-- **Carrossel** (`Carrossel/Carrossel.jsx`) — carrossel genérico com snap, setas, indicadores, toque e teclado. Props: `children` (cada filho é um slide), `rotulo`, `circular` (setas dão a volta).
+- **CarrosselFaixa** (`Carrossel/CarrosselFaixa.jsx`) — faixa contínua com vários itens visíveis que avança/volta um item por clique, de forma circular. Props: `children`, `rotulo`.
+- **Carrossel** (`Carrossel/Carrossel.jsx`) — carrossel genérico com snap, setas, indicadores, toque e teclado. Props: `children` (cada filho é um slide), `rotulo`.
 - **CardExperience** (`Card/CardExperience.jsx`) — cartão de experiência: logo, empresa, cargo, período ("atual" se sem `endDate`), descrição e tecnologias como chips. Props: `experience`.
 **CardProject**, **CardContact** — apresentação de itens das seções.
 
 - **Skills** (`sections/Skills.jsx`) — habilidades agrupadas por classificação (Frontend, Backend, DevOps, Dados, Outros) via campo `categoria` de `assets/consts/skills.js`.
 - **CardCategoriaHabilidades** (`Card/CardCategoriaHabilidades.jsx`) — cartão de uma classificação com lista de habilidades. Props: `titulo`, `icone`, `habilidades`.
 - **CardSkill** (`Card/CardSkill.jsx`) — item da lista: ícone + rótulo. Props: `skill`.
-- **Projects** (`sections/Projects.jsx`) — projetos em `Carrossel` circular (setas e indicadores) com `CardProject`; gerencia o `ModalProject` aberto.
+- **Projects** (`sections/Projects.jsx`) — projetos em `CarrosselFaixa` (vários cards visíveis, avança/volta pelos botões) com `CardProject`; gerencia o `ModalProject` aberto.
 - **CardProject** (`Card/CardProject.jsx`) — imagem, categoria, ano, nome, tecnologias e botão "Ver detalhes". Props: `project`, `aoVerDetalhes`.
 - **ModalProject** (`Modal/ModalProject.jsx`) — modal (portal) com galeria, descrição, tecnologias e links. Props: `project`, `aoFechar`.

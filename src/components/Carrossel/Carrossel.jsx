@@ -5,9 +5,8 @@ import styles from './Carrossel.module.css'
 /**
  * Carrossel genérico com rolagem por snap, botões, indicadores e suporte a toque/teclado.
  * Cada filho vira um slide que ocupa toda a largura.
- * Com `circular`, as setas voltam ao início/fim em vez de desabilitar.
  */
-function Carrossel({ children, rotulo = 'Carrossel', circular = false }) {
+function Carrossel({ children, rotulo = 'Carrossel' }) {
     const trilhoRef = useRef(null)
     const [ativo, setAtivo] = useState(0)
     const slides = Children.toArray(children)
@@ -16,10 +15,9 @@ function Carrossel({ children, rotulo = 'Carrossel', circular = false }) {
     const irPara = useCallback((indice) => {
         const trilho = trilhoRef.current
         if (!trilho) return
-        const limitado = circular ? (indice + total) % total : Math.max(0, Math.min(indice, total - 1))
-        const destino = limitado
+        const destino = Math.max(0, Math.min(indice, total - 1))
         trilho.scrollTo({ left: destino * trilho.clientWidth, behavior: 'smooth' })
-    }, [total, circular])
+    }, [total])
 
     useEffect(() => {
         const trilho = trilhoRef.current
@@ -41,7 +39,7 @@ function Carrossel({ children, rotulo = 'Carrossel', circular = false }) {
                     <button
                         className={`${styles.seta} ${styles.anterior}`}
                         onClick={() => irPara(ativo - 1)}
-                        disabled={!circular && ativo === 0}
+                        disabled={ativo === 0}
                         aria-label="Anterior"
                     >
                         <FaChevronLeft />
@@ -66,7 +64,7 @@ function Carrossel({ children, rotulo = 'Carrossel', circular = false }) {
                     <button
                         className={`${styles.seta} ${styles.proximo}`}
                         onClick={() => irPara(ativo + 1)}
-                        disabled={!circular && ativo === total - 1}
+                        disabled={ativo === total - 1}
                         aria-label="Próximo"
                     >
                         <FaChevronRight />

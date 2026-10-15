@@ -1,7 +1,5 @@
 .card {
   width: 560px;
-  max-width: 100%;
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
   text-align: left;
@@ -121,7 +119,7 @@
 
 @media (max-width: 640px) {
   .card {
-    width: 100%;
+    width: 340px;
   }
 
   .imagem {
