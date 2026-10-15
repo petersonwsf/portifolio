@@ -14,7 +14,7 @@ const CATEGORIAS = [
 
 function Skills() {
     return (
-        <SecaoEscura id="skills" etiqueta="<stack />" titulo="Habilidades">
+        <SecaoEscura id="skills" etiqueta="<stack />" titulo="Tecnologias">
             <div className={styles.categorias}>
                 {CATEGORIAS.map(({ nome, icone }) => {
                     const habilidades = skills.filter((skill) => skill.categoria === nome)
