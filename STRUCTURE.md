@@ -20,3 +20,8 @@ Site público do portfólio (React + Vite, CSS Modules + Bootstrap).
 - `src/services/contato.js` — envio do formulário de contato (simulado; falta integrar ao backend).
 - `src/components/Form/` — `FormularioContato`.
 - `src/assets/img/` — imagens.
+
+## Deploy
+- `Dockerfile` — build do Vite (`VITE_API_URL` via build-arg) e imagem final com Nginx; `nginx.conf` — servidor estático com fallback de SPA.
+- `.github/workflows/deploy.yml` — CD: build, push no GHCR e atualização do container na VPS por SSH.
+- `deploy/` — `docker-compose.yml` de exemplo para a VPS e `LEIAME.md` com os secrets/variáveis necessários.
