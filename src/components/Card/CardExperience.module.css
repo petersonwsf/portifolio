@@ -1,29 +1,32 @@
 .card {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 0.7fr 1.3fr;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
   height: 100%;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: left;
   color: #f6f6f6;
   border: 1px solid rgba(79, 125, 255, 0.35);
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(12, 59, 176, 0.18), rgba(41, 41, 40, 0.6));
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(20, 20, 20, 0.7);
+  box-shadow: 0 0 0 1px rgba(12, 59, 176, 0.25), 0 20px 50px rgba(12, 59, 176, 0.35);
 }
 
 .imagem {
   display: grid;
   place-items: center;
-  padding: 1.25rem;
+  padding: 1rem;
   border-radius: 12px;
   background: #fff;
+  box-shadow: 0 10px 30px rgba(12, 59, 176, 0.45);
 }
 
 .imagem img {
   width: 100%;
-  max-height: 220px;
+  max-height: 120px;
   object-fit: contain;
 }
 
@@ -49,7 +52,7 @@
 
 .empresa {
   margin-bottom: 0.25rem;
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: 700;
 }
 
@@ -61,8 +64,9 @@
 }
 
 .descricao {
-  margin-bottom: 1.25rem;
-  line-height: 1.7;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -80,6 +84,7 @@
   font-size: 0.8rem;
   color: #cfdcff;
   background: rgba(12, 59, 176, 0.25);
+  box-shadow: 0 4px 14px rgba(12, 59, 176, 0.35);
 }
 
 @media (max-width: 768px) {
@@ -90,6 +95,6 @@
   }
 
   .imagem img {
-    max-height: 140px;
+    max-height: 100px;
   }
 }
