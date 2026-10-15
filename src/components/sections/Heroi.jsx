@@ -80,8 +80,8 @@ function Heroi() {
 
     const irParaSecao = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 
-    const todasTecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage), [])
-    const { passo, itens: tecnologias } = useCarrossel(todasTecnologias, 6, 2000)
+    const todasTecnologias = useMemo(() => habilidades.filter((habilidade) => habilidade.urlImage && habilidade.name !== 'GitHub'), [])
+    const { passo, itens: tecnologias } = useCarrossel(todasTecnologias, 5, 2000)
     const total = tecnologias.length
     const indiceFrontal = ((passo % total) + total) % total
     const frontal = tecnologias[indiceFrontal]

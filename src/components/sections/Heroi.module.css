@@ -159,7 +159,7 @@
 
 .orbita {
   --raio-x: 190px;
-  --raio-y: 28px;
+  --raio-y: 40px;
   position: relative;
   width: min(100%, 460px);
   margin: 0 auto;
@@ -173,7 +173,7 @@
 .carrossel {
   position: relative;
   width: 100%;
-  height: 170px;
+  height: 190px;
 }
 
 .satelite {
@@ -288,7 +288,7 @@
 
   .orbita {
     --raio-x: 130px;
-    --raio-y: 20px;
+    --raio-y: 30px;
     width: min(100%, 340px);
   }
 }
