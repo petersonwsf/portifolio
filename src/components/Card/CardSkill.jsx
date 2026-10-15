@@ -4,7 +4,7 @@ import styles from './CardSkill.module.css'
 function CardSkill({ skill }) {
     return (
         <li className={styles.item}>
-            <span className={styles.icone} style={skill.fundoIcone ? { background: skill.fundoIcone } : undefined}>
+            <span className={styles.icone}>
                 <img src={skill.urlImage} alt="" />
             </span>
             <span className={styles.rotulo}>{skill.name}</span>
