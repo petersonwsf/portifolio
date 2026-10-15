@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import projects from '../../assets/consts/projects'
 import CardProject from '../Card/CardProject'
-import CarrosselLoop from '../Carrossel/CarrosselLoop'
+import Carrossel from '../Carrossel/Carrossel'
 import ModalProject from '../Modal/ModalProject'
 import SecaoEscura from '../layout/SecaoEscura'
 
@@ -11,11 +11,11 @@ function Projects() {
 
     return (
         <SecaoEscura id="projects" etiqueta="<projetos />" titulo="Projetos">
-            <CarrosselLoop rotulo="Projetos" duracao={60}>
+            <Carrossel rotulo="Projetos" circular>
                 {projects.map((project) => (
                     <CardProject key={project.id} project={project} aoVerDetalhes={setProjetoSelecionado} />
                 ))}
-            </CarrosselLoop>
+            </Carrossel>
 
             {projetoSelecionado && <ModalProject project={projetoSelecionado} aoFechar={fecharModal} />}
         </SecaoEscura>
