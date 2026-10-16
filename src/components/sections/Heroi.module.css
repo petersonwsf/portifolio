@@ -254,36 +254,6 @@
   max-width: 55%;
 }
 
-.estatisticas {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.estatistica {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.estatistica strong {
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 800;
-  color: #fff;
-}
-
-.estatistica span {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
 @keyframes piscar {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
