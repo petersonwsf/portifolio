@@ -9,8 +9,20 @@
   /* espaço interno para as sombras dos cards não serem cortadas */
   padding: 2rem 0 3rem;
   margin: -2rem 0 -3rem;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, var(--borda-esq, 0)) 0%,
+    #000 6%,
+    #000 94%,
+    rgba(0, 0, 0, var(--borda-dir, 0)) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, var(--borda-esq, 0)) 0%,
+    #000 6%,
+    #000 94%,
+    rgba(0, 0, 0, var(--borda-dir, 0)) 100%
+  );
 }
 
 .trilho {

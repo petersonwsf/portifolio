@@ -10,7 +10,7 @@
 - **Experiences** (`sections/Experiences.jsx`) — experiências em `CarrosselFaixa` (3 visíveis, 1 central) com `CardExperience`; o botão "Ver detalhes" abre `ModalExperience`.
 
 ## Cartões / Modal
-- **CarrosselFaixa** (`Carrossel/CarrosselFaixa.jsx`) — faixa contínua com vários itens visíveis e o atual centralizado; avança/volta por botões, sem loop (setas desabilitadas nas pontas). Com menos de 3 itens, mostra-os fixos e centralizados. Props: `children`, `rotulo`.
+- **CarrosselFaixa** (`Carrossel/CarrosselFaixa.jsx`) — faixa com vários itens visíveis; começa alinhada à esquerda e para quando o último item encosta na borda direita (sem espaço vazio nas pontas); avança/volta por botões, sem loop. Com menos de 3 itens, mostra-os fixos e centralizados. Props: `children`, `rotulo`.
 - **Carrossel** (`Carrossel/Carrossel.jsx`) — carrossel genérico com snap, setas, indicadores, toque e teclado. Props: `children` (cada filho é um slide), `rotulo`.
 - **CardContact** (`Card/CardContact.jsx`) — link de contato externo (LinkedIn, GitHub). Props: `contact` ({ label, value, icone, link }).
 - **CardExperience** (`Card/CardExperience.jsx`) — cartão compacto: logo, categoria, empresa, cargo, período ("atual" se sem `dataFim`) e botão "Ver detalhes". Props: `experiencia`, `aoVerDetalhes`.
