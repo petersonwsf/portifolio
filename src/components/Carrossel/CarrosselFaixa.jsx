@@ -3,10 +3,12 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import styles from './CarrosselFaixa.module.css'
 
 const COPIAS = 3
+const MINIMO_PARA_CARROSSEL = 3
 
 /**
  * Carrossel em faixa contínua: mostra vários itens lado a lado e avança/volta um item
  * por clique nos botões, de forma circular (sem fim), mantendo o item atual centralizado.
+ * Com menos de 3 itens, mostra-os fixos e centralizados (sem setas).
  * Cada filho é um item.
  * Props: `children`, `rotulo`.
  */
@@ -52,6 +54,19 @@ function CarrosselFaixa({ children, rotulo = 'Carrossel' }) {
     const aoTeclar = (evento) => {
         if (evento.key === 'ArrowRight') mover(1)
         if (evento.key === 'ArrowLeft') mover(-1)
+    }
+
+    // com menos de 3 itens, repetir os cards nas laterais ficaria duplicado: exibe-os centralizados e fixos
+    if (total < MINIMO_PARA_CARROSSEL) {
+        return (
+            <div className={styles.estatico} role="region" aria-label={rotulo}>
+                {itens.map((item, indice) => (
+                    <div className={styles.item} key={indice}>
+                        {item}
+                    </div>
+                ))}
+            </div>
+        )
     }
 
     return (

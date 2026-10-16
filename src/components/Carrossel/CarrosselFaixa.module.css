@@ -28,6 +28,13 @@
   padding: 0 0.9rem;
 }
 
+.estatico {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 0;
+}
+
 .controles {
   position: relative;
   z-index: 2;
