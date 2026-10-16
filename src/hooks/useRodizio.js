@@ -9,6 +9,14 @@ function useRodizio(lista, quantidade = 8, intervalo = 2500) {
     const total = Math.min(quantidade, lista.length)
     const [passo, setPasso] = useState(0)
     const [indices, setIndices] = useState(() => Array.from({ length: total }, (_, i) => i))
+    const [listaBase, setListaBase] = useState(lista)
+
+    // a lista pode chegar depois (dados vindos da API): reinicia a seleção quando ela mudar
+    if (listaBase !== lista) {
+        setListaBase(lista)
+        setIndices(Array.from({ length: total }, (_, i) => i))
+        setPasso(0)
+    }
 
     useEffect(() => {
         if (lista.length <= total) return undefined
@@ -20,7 +28,7 @@ function useRodizio(lista, quantidade = 8, intervalo = 2500) {
     }, [lista, total, intervalo])
 
     useEffect(() => {
-        if (passo === 0) return
+        if (passo === 0 || total === 0) return
         const posicao = (passo - 1) % total
         setIndices((atuais) => {
             const ausentes = lista.map((_, i) => i).filter((i) => !atuais.includes(i))
