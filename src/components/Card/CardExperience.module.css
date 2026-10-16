@@ -1,6 +1,6 @@
 .card {
   width: 300px;
-  min-height: 220px;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -29,8 +29,8 @@
 }
 
 .logo {
-  width: 52px;
-  height: 52px;
+  width: 76px;
+  height: 76px;
   object-fit: contain;
 }
 
