@@ -97,6 +97,6 @@
 
 @media (max-width: 640px) {
   .card {
-    width: 260px;
+    width: min(300px, calc(100vw - 4.5rem));
   }
 }

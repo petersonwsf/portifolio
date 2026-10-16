@@ -80,6 +80,20 @@
   cursor: default;
 }
 
+/* telas pequenas: o carrossel ocupa a largura toda (sai do padding da seção), sem esmaecer as bordas,
+   para os cards e suas sombras não serem cobertos nem cortados */
+@media (max-width: 720px) {
+  .carrossel {
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+  }
+
+  .janela {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animando {
     transition: none;
