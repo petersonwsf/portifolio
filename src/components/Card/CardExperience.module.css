@@ -1,44 +1,71 @@
 .card {
-  display: grid;
-  grid-template-columns: 0.7fr 1.3fr;
-  align-items: center;
-  gap: 1.5rem;
-  max-width: 720px;
-  margin: 0 auto;
-  height: 100%;
-  padding: 1.5rem;
+  width: 300px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem;
   text-align: left;
   color: #f6f6f6;
-  border: 1px solid rgba(79, 125, 255, 0.35);
-  border-radius: 16px;
-  background: rgba(20, 20, 20, 0.7);
-  box-shadow: 0 0 0 1px rgba(12, 59, 176, 0.25), 0 20px 50px rgba(12, 59, 176, 0.35);
+  border: 1px solid rgba(79, 125, 255, 0.45);
+  border-radius: 14px;
+  background: rgba(20, 20, 20, 0.55);
+  box-shadow: 0 10px 30px rgba(12, 59, 176, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.imagem {
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-  border-radius: 12px;
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #4f7dff;
+  box-shadow: 0 16px 40px rgba(12, 59, 176, 0.45);
 }
 
-.imagem img {
-  width: 100%;
-  max-height: 120px;
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo {
+  width: 76px;
+  height: 76px;
   object-fit: contain;
 }
 
-.conteudo {
-  min-width: 0;
+.categoria {
+  padding: 0.15rem 0.7rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  background: #0c3bb0;
+  box-shadow: 0 4px 14px rgba(12, 59, 176, 0.6);
+}
+
+.empresa {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.cargo {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #8fb0ff;
 }
 
 .periodo {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  padding: 0.25rem 0.8rem;
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  padding: 0.15rem 0.7rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50px;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -48,51 +75,28 @@
   background: rgba(61, 220, 132, 0.1);
 }
 
-.empresa {
-  margin-bottom: 0.25rem;
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  font-weight: 700;
-}
-
-.cargo {
-  margin-bottom: 1rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #8fb0ff;
-}
-
-.descricao {
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.tecnologias {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  list-style: none;
-}
-
-.tecnologias li {
-  padding: 0.25rem 0.75rem;
-  border: 1px solid rgba(79, 125, 255, 0.45);
+.botao {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid rgba(79, 125, 255, 0.6);
   border-radius: 50px;
+  background: rgba(12, 59, 176, 0.12);
+  font-weight: 600;
   font-size: 0.8rem;
-  color: #cfdcff;
-  background: rgba(12, 59, 176, 0.25);
-  box-shadow: 0 4px 14px rgba(12, 59, 176, 0.35);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .card {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding: 1.25rem;
-  }
+.botao:hover {
+  background: rgba(12, 59, 176, 0.45);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(12, 59, 176, 0.4);
+}
 
-  .imagem img {
-    max-height: 100px;
+@media (max-width: 640px) {
+  .card {
+    width: min(300px, calc(100vw - 4.5rem));
   }
 }

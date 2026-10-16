@@ -123,9 +123,9 @@
   box-shadow: 0 6px 16px rgba(12, 59, 176, 0.4);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .card {
-    width: 340px;
+    width: min(340px, calc(100vw - 4.5rem));
   }
 
   .imagem {

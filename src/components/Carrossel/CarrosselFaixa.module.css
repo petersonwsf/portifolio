@@ -9,8 +9,20 @@
   /* espaço interno para as sombras dos cards não serem cortadas */
   padding: 2rem 0 3rem;
   margin: -2rem 0 -3rem;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, var(--borda-esq, 0)) 0%,
+    #000 6%,
+    #000 94%,
+    rgba(0, 0, 0, var(--borda-dir, 0)) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, var(--borda-esq, 0)) 0%,
+    #000 6%,
+    #000 94%,
+    rgba(0, 0, 0, var(--borda-dir, 0)) 100%
+  );
 }
 
 .trilho {
@@ -26,6 +38,13 @@
   display: flex;
   flex: 0 0 auto;
   padding: 0 0.9rem;
+}
+
+.estatico {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 0;
 }
 
 .controles {
@@ -51,9 +70,28 @@
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.seta:hover {
+.seta:hover:not(:disabled) {
   background: #0c3bb0;
   transform: scale(1.08);
+}
+
+.seta:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* telas pequenas: o carrossel ocupa a largura toda (sai do padding da seção), sem esmaecer as bordas,
+   para os cards e suas sombras não serem cobertos nem cortados */
+@media (max-width: 720px) {
+  .carrossel {
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+  }
+
+  .janela {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

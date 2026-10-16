@@ -1,6 +1,9 @@
 .secao {
   position: relative;
   overflow: hidden;
+  /* espaçamento vertical entre seções (o padrão global é 5rem) */
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
   background: #292928;
 }
 

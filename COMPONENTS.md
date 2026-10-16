@@ -6,18 +6,18 @@
 - **Container** (`layout/Container.jsx`) — wrapper do `<main>`. Props: `children`.
 
 ## Seções
-- **Heroi** (`sections/Heroi.jsx`) — hero interativa: saudação por horário, papéis digitados, foto com 8 logos de tecnologias orbitando (um é trocado a cada 2,5s), selos de hora de Brasília e dados do GitHub, contadores animados. Sem props.
-- **Experiences** (`sections/Experiences.jsx`) — experiências em `Carrossel` com `CardExperience`, fundo escuro com grade igual à hero (sem brilho do mouse) e sombras azuis.
+- **Heroi** (`sections/Heroi.jsx`) — hero interativa: saudação por horário, papéis digitados, foto com 8 logos de tecnologias orbitando (um é trocado a cada 2,5s), selos de hora de Brasília e dados do GitHub. Sem props.
+- **Experiences** (`sections/Experiences.jsx`) — experiências em `CarrosselFaixa` (3 visíveis, 1 central) com `CardExperience`; o botão "Ver detalhes" abre `ModalExperience`.
 
 ## Cartões / Modal
-- **CarrosselFaixa** (`Carrossel/CarrosselFaixa.jsx`) — faixa contínua com vários itens visíveis que avança/volta um item por clique, de forma circular. Props: `children`, `rotulo`.
+- **CarrosselFaixa** (`Carrossel/CarrosselFaixa.jsx`) — faixa com vários itens visíveis; começa alinhada à esquerda e para quando o último item encosta na borda direita (sem espaço vazio nas pontas); avança/volta por botões, sem loop. Com menos de 3 itens, mostra-os fixos e centralizados. Props: `children`, `rotulo`.
 - **Carrossel** (`Carrossel/Carrossel.jsx`) — carrossel genérico com snap, setas, indicadores, toque e teclado. Props: `children` (cada filho é um slide), `rotulo`.
 - **CardContact** (`Card/CardContact.jsx`) — link de contato externo (LinkedIn, GitHub). Props: `contact` ({ label, value, icone, link }).
-- **CardExperience** (`Card/CardExperience.jsx`) — cartão de experiência: logo, empresa, cargo, período ("atual" se sem `endDate`), descrição e tecnologias como chips. Props: `experiencia` ({ empresa, cargo, descricao, dataInicio, dataFim, imagem, tecnologias }).
+- **CardExperience** (`Card/CardExperience.jsx`) — cartão compacto: logo, categoria, empresa, cargo, período ("atual" se sem `dataFim`) e botão "Ver detalhes". Props: `experiencia`, `aoVerDetalhes`.
 **CardProject** — apresentação de itens das seções.
 
 - **Skills** (`sections/Skills.jsx`) — habilidades agrupadas por classificação (Frontend, Backend, DevOps, Dados, Outros) via campo `categoria` das habilidades vindas da API, com o nível de cada uma.
-- **CardCategoriaHabilidades** (`Card/CardCategoriaHabilidades.jsx`) — cartão de uma classificação com lista de habilidades. Props: `titulo`, `icone`, `habilidades`.
+- **CardCategoriaHabilidades** (`Card/CardCategoriaHabilidades.jsx`) — cartão de uma classificação: mostra até 5 habilidades; se houver mais, o restante fica sob um esmaecimento e o botão "Ver mais" expande só esse cartão. Props: `titulo`, `icone`, `habilidades`.
 - **CardSkill** (`Card/CardSkill.jsx`) — item da lista: ícone + rótulo. Props: `habilidade` ({ nome, imagem, nivel }); mostra o nível com 3 círculos e rótulo.
 - **Projects** (`sections/Projects.jsx`) — projetos em `CarrosselFaixa` (vários cards visíveis, avança/volta pelos botões) com `CardProject`; gerencia o `ModalProject` aberto.
 - **CardProject** (`Card/CardProject.jsx`) — imagem, categoria, ano, nome, tecnologias (até 2 linhas + "Mais x...") e botão "Ver detalhes". Props: `projeto` ({ nome, categoria, ano, descricao, tecnologias, imagens, urlCodigo, urlPagina }), `aoVerDetalhes`.
@@ -25,3 +25,5 @@
 - **Contacts** (`sections/Contacts.jsx`) — formulário de contato + links de LinkedIn e GitHub, em `SecaoEscura`.
 - **FormularioContato** (`Form/FormularioContato.jsx`) — formulário (nome, e-mail, assunto, mensagem) com validação no cliente; envia via `services/contato.js` (simulado por enquanto). Sem props.
 - **EstadoConteudo** (`layout/EstadoConteudo.jsx`) — exibe carregando/erro/vazio no lugar do conteúdo de uma seção. Props: `carregando`, `erro`, `vazio`, `mensagemVazia`, `children`.
+- **ModalBase** (`Modal/ModalBase.jsx`) — estrutura de modal (portal, fundo, Esc/clique fora fecham, bloqueio de rolagem). Props: `rotulo`, `aoFechar`, `largura`, `children`.
+- **ModalExperience** (`Modal/ModalExperience.jsx`) — modal pequeno com todos os dados da experiência (logo, categoria, período, descrição e tecnologias). Props: `experiencia`, `aoFechar`.

@@ -1,0 +1,101 @@
+.topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.25rem 2rem 1rem 0;
+}
+
+.logo {
+  width: 130px;
+  height: 130px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.categoria {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  padding: 0.15rem 0.7rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  background: #0c3bb0;
+  box-shadow: 0 4px 14px rgba(12, 59, 176, 0.6);
+}
+
+.empresa {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.cargo {
+  margin: 0.15rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #8fb0ff;
+}
+
+.periodo {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.2rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.periodoAtual {
+  border-color: #3ddc84;
+  color: #3ddc84;
+  background: rgba(61, 220, 132, 0.1);
+}
+
+.descricao {
+  margin: 0 0 1.25rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.subtitulo {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #8fb0ff;
+}
+
+.tecnologias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tecnologias li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.7rem 0.2rem 0.5rem;
+  border: 1px solid rgba(79, 125, 255, 0.45);
+  border-radius: 50px;
+  font-size: 0.78rem;
+  color: #cfdcff;
+  background: rgba(12, 59, 176, 0.25);
+}
+
+.tecnologias li img,
+.tecnologias li svg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9));
+}

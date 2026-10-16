@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { FaGithub, FaArrowDown, FaCircle } from 'react-icons/fa'
 import useDigitacao from '../../hooks/useDigitacao'
-import useContagem from '../../hooks/useContagem'
 import useRodizio from '../../hooks/useRodizio'
 import foto from '../../assets/img/eu.jpeg'
 import { useConteudo } from '../../hooks/useConteudo'
@@ -26,28 +25,10 @@ const saudacaoPorHora = (data) => {
     return 'Boa noite'
 }
 
-const mesesDeExperiencia = (experiencias) => {
-    const inicios = experiencias.map((item) => new Date(item.dataInicio).getTime())
-    if (inicios.length === 0) return 0
-    const inicio = new Date(Math.min(...inicios))
-    const agora = new Date()
-    return (agora.getFullYear() - inicio.getFullYear()) * 12 + (agora.getMonth() - inicio.getMonth())
-}
-
-function Estatistica({ valor, rotulo }) {
-    const contado = useContagem(valor)
-    return (
-        <div className={styles.estatistica}>
-            <strong>{contado}</strong>
-            <span>{rotulo}</span>
-        </div>
-    )
-}
-
 function Heroi() {
     const [agora, setAgora] = useState(() => new Date())
     const papel = useDigitacao(PAPEIS)
-    const { projetos, habilidades, experiencias } = useConteudo()
+    const { habilidades } = useConteudo()
 
     useEffect(() => {
         const intervalo = setInterval(() => setAgora(new Date()), 1000)
@@ -114,11 +95,6 @@ function Heroi() {
                 </aside>
             </div>
 
-            <div className={styles.estatisticas}>
-                <Estatistica valor={projetos.length} rotulo="Projetos" />
-                <Estatistica valor={habilidades.length} rotulo="Tecnologias" />
-                <Estatistica valor={mesesDeExperiencia(experiencias)} rotulo="Meses de experiência" />
-            </div>
         </section>
     )
 }
