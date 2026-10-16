@@ -58,9 +58,14 @@
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.seta:hover {
+.seta:hover:not(:disabled) {
   background: #0c3bb0;
   transform: scale(1.08);
+}
+
+.seta:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
 @media (prefers-reduced-motion: reduce) {
