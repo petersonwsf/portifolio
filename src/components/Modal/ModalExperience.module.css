@@ -1,13 +1,14 @@
 .topo {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
   margin: 0.25rem 2rem 1rem 0;
 }
 
 .logo {
-  width: 96px;
-  height: 96px;
+  width: 130px;
+  height: 130px;
   flex: 0 0 auto;
   object-fit: contain;
 }
